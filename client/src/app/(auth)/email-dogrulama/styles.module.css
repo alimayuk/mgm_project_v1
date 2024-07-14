@@ -1,0 +1,75 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 300px;
+  gap: 20px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 20px;
+  background: rgb(252, 249, 249);
+}
+
+.info p {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.successCard a,
+.errorCard a {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.errorCard a {
+  color: red;
+}
+
+.successCard a {
+  color: green;
+}
+
+.errorCard svg,
+.successCard svg {
+  width: 120px;
+  height: 120px;
+}
+
+.errorCard svg {
+  color: red;
+}
+
+.successCard svg {
+  color: green;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper{
+        padding: 0 10px;
+    }
+    .info {
+        width: 100%;
+    }
+    .info svg {
+        width: 100px;
+        height: 100px;
+    }
+}

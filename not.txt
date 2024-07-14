@@ -1,0 +1,4 @@
+-şifre sıfırlama linkini düzenle frontendini yaz oluştur.
+- verifyemail client kısmını auth da yer oluştur.
+- reset password link gönderme clientin kısmını düzenle.
+- email doğrulama için toolkit kısmında api oluştur ve page içinde orayı düzenle.

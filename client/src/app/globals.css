@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --colorblack: #000;
+  --colorblack1: #0f0d1d;
+  --color0: #fff;
+  --color1: #b4b4b4;
+  --color2: #b4b4b433;
+  --color3: #6b6b6be3;
+  --color4: #f8f2f2c2;
+  --color5: #0f0d1d;
+  --color7: #e0eafb;
+  --color8: #3c72fc;
+  --color9: #142958;
+  --color10: #9c9c9c;
+  --colorgreen: rgb(6, 129, 6);
+  --colororange: rgb(194, 137, 15);
+  --colorred: rgb(214, 7, 7);
+  --coloryellow: rgb(177, 177, 21);
+  --gradient1: 90deg, #0f0d1d -76.72%, #3c72fc 191.51%;
+  --gradient2: 90deg, #3c72fc -10.59%, #00060c 300.59%;
+  --gradient3: 0deg, rgba(0, 6, 12, 1) 21%, rgba(60, 114, 252, 1) 99%;
+  --boxShadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 10px auto 0;
+  padding: 0 5px;
+}
+
+.ant-drawer-header-title {
+  flex-direction: row-reverse;
+}
+
+.logo {
+  width: 180px;
+  height: auto;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 80px;
+  padding: 0 20px;
+  border-radius: 20px;
+  margin-top: 20px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.ant-menu {
+  line-height: 0 !important;
+  height: 100% !important;
+  border-bottom: none !important;
+}
+
+.ant-menu-item-selected,
+.ant-menu-item-selected::after {
+  border-bottom-width: 0 !important;
+  color: inherit !important;
+}
+.ant-menu-item:hover {
+  color: rgb(0, 89, 255) !important;
+}
+
+.ant-menu-item::after {
+  position: static !important;
+  inset-inline: 0 !important;
+  bottom: 0 !important;
+  border-bottom: 0 !important;
+  border-color: transparent !important;
+  content: "" !important;
+}
+.ant-menu-item:hover::after {
+  border-bottom-width: 0 !important;
+  border-bottom-color: transparent !important;
+}
+
+
+
+.btnRandevu{
+  margin-right: 20px ;
+}
+
+@media screen and (min-width: 768px) {
+  .desktopMenu {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .desktopMenu {
+    display: none;
+  }
+
+  .ant-menu-item{
+    border-bottom: 1px solid #ccc;
+  }
+ 
+}
