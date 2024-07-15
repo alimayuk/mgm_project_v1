@@ -52,7 +52,7 @@ const Navbar = () => {
       
       {!isMobile && (
         <div className="desktopMenu">
-          <Menu mode="horizontal" items={items} />
+          <Menu mode="horizontal" style={{ backgroundColor:"transparent" }} items={items} />
         </div>
       )}
       <div className="menuIcon">
