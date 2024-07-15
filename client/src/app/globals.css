@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background: #f3f4f6;
+}
+
 :root {
   --colorblack: #000;
   --colorblack1: #0f0d1d;
@@ -27,6 +31,8 @@
   --boxShadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
     rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
+
+
 
 a {
   text-decoration: none;
@@ -61,7 +67,7 @@ li {
   height: 80px;
   padding: 0 20px;
   border-radius: 20px;
-  margin-top: 20px;
+  margin: 20px auto;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
@@ -93,25 +99,12 @@ li {
   border-bottom-color: transparent !important;
 }
 
-
-
-.btnRandevu{
-  margin-right: 20px ;
-}
-
-@media screen and (min-width: 768px) {
-  .desktopMenu {
-    display: block;
-  }
+.btnRandevu {
+  margin-right: 20px;
 }
 
 @media screen and (max-width: 767px) {
-  .desktopMenu {
-    display: none;
-  }
-
-  .ant-menu-item{
+  .ant-menu-item {
     border-bottom: 1px solid #ccc;
   }
- 
 }

@@ -10,11 +10,12 @@ import {
 } from "@ant-design/icons";
 
 const items = [
-  { key: "home", icon: <HomeOutlined />, label: "Home" },
-  { key: "about", icon: <InfoCircleOutlined />, label: "About" },
-  { key: "services", icon: <SolutionOutlined />, label: "Services" },
-  { key: "contact", icon: <MailOutlined />, label: "Contact" },
+  { key: "home", icon: <HomeOutlined />, label: "Ana Sayfa" },
+  { key: "about", icon: <InfoCircleOutlined />, label: "Hakkımızda" },
+  { key: "services", icon: <SolutionOutlined />, label: "Hizmetler" },
+  { key: "contact", icon: <MailOutlined />, label: "İletişim" },
 ];
+
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
