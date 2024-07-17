@@ -3,6 +3,7 @@ import BlogComp from '@/components/BlogComp';
 import CarouselComp from '@/components/CarouselComp';
 import ServiceCard from '@/components/ServiceComp';
 import StatisticComp from '@/components/StatisticComp';
+import TimelineComp from '@/components/Timeline';
 import React from 'react';
 const page = () => {
   return (
@@ -11,6 +12,7 @@ const page = () => {
     <ServiceCard />
     <StatisticComp />
     <BlogComp />
+    <TimelineComp />
     </div>
   )
 }

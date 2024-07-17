@@ -32,8 +32,6 @@ body {
     rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
-
-
 a {
   text-decoration: none;
   color: inherit;
@@ -72,18 +70,7 @@ li {
 }
 
 .ant-menu {
-  line-height: 0 !important;
-  height: 100% !important;
   border-bottom: none !important;
-}
-
-.ant-menu-item-selected,
-.ant-menu-item-selected::after {
-  border-bottom-width: 0 !important;
-  color: inherit !important;
-}
-.ant-menu-item:hover {
-  color: rgb(0, 89, 255) !important;
 }
 
 .ant-menu-item::after {

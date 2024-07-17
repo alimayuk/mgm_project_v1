@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Menu, Drawer, Button } from "antd";
+import { Menu, Drawer, Button, ConfigProvider } from "antd";
 import {
   MenuOutlined,
   HomeOutlined,
@@ -15,7 +15,6 @@ const items = [
   { key: "services", icon: <SolutionOutlined />, label: "Hizmetler" },
   { key: "contact", icon: <MailOutlined />, label: "İletişim" },
 ];
-
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
@@ -47,26 +46,40 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="navbar">
-      <img src="logo.svg" alt="" className="logo" />
-      
-      {!isMobile && (
-        <div className="desktopMenu">
-          <Menu mode="horizontal" style={{ backgroundColor:"transparent" }} items={items} />
+      <div className="navbar">
+        <img src="logo.svg" alt="" className="logo" />
+
+        {!isMobile && (
+          <div className="desktopMenu">
+            <Menu
+              mode="horizontal"
+              items={items}
+            />
+          </div>
+        )}
+        <div className="menuIcon">
+          <Button className="btnRandevu" type="primary">
+            Randevu
+          </Button>
+          {isMobile && <MenuOutlined onClick={showDrawer} />}
         </div>
-      )}
-      <div className="menuIcon">
-        <Button className="btnRandevu" type="primary">Randevu</Button>
-        {isMobile && <MenuOutlined onClick={showDrawer} />}
+        <Drawer
+          width={300}
+          placement="left"
+          onClose={onClose}
+          open={visible}
+          styles={{
+            body: {
+              padding: 0,
+            },
+            header: {
+              border: 0,
+            },
+          }}
+        >
+          <Menu width={"100%"} mode="vertical" items={items} />
+        </Drawer>
       </div>
-      <Drawer width={300} placement="left" onClose={onClose} open={visible} styles={{ body:{
-        padding: 0,
-      }, header:{
-        border: 0,
-      } }}>
-        <Menu width={"100%"} mode="vertical" items={items} />
-      </Drawer>
-    </div>
   );
 };
 

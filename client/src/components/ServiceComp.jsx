@@ -60,7 +60,7 @@ const ServiceComp = () => (
     </Paragraph>
     <Row gutter={[16, 16]}>
       {items.map((item, i) => (
-        <Col xs={24} sm={12} lg={8}>
+        <Col xs={24} sm={12} lg={8} key={i}>
           <Card
             style={{
               padding: "25px",
