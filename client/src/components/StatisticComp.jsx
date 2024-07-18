@@ -44,7 +44,7 @@ const StatisticComp = () => {
                 styles={{
                   header: {
                     border: "none",
-                    fontSize: "2.25rem",
+                    fontSize: "60px",
                     fontWeight: "700",
                   },
                   body: {
