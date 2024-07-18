@@ -98,3 +98,84 @@ li {
     border-bottom: 1px solid #ccc;
   }
 }
+
+.footer{
+  padding: 60px 5px;
+}
+
+.footerTop{
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.footerTop p{
+  font-size: 14px;
+  line-height: 25px;
+}
+.footerAbout{
+  flex: 1;
+}
+
+.footerLogo{
+  margin-bottom: 20px;
+}
+
+.footerAbout p{
+  max-width: 400px;
+}
+
+.footerContactSocial{
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+}
+.socialİcons{
+  display: flex;
+  gap: 20px;
+  font-size: 25px;
+}
+.footerTop h4{
+  margin-bottom: 10px;
+}
+
+.footerSocial p:last-child{
+  max-width: 300px;
+}
+
+.footerBottom{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.footerPrivacyTerms{
+  display: flex;
+  gap: 20px;
+}
+
+@media screen and (max-width: 768px){
+.footerTop{
+  flex-direction: column;
+  gap: 40px;
+}
+.footerBottom{
+  gap: 20px;
+  flex-direction: column;
+}
+.footerBottom p{
+  text-align: center;
+}
+.footerPrivacyTerms {
+  display: inline-flex;
+  gap: 20px;
+justify-content: center;
+  }
+}
+@media screen and (max-width: 600px){
+  .footerContactSocial{
+    flex-direction: column;
+    gap: 40px;
+  }
+  }

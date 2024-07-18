@@ -66,11 +66,7 @@ const TimelineComp = () => {
         İşte adım adım nasıl ilerleyeceğiniz
       </Paragraph>
       <Row gutter={[16, 16]}>
-        <Col
-          lg={12}
-          sm={24}
-          style={{ height: "800px", display: "flex", alignItems: "center" }}
-        >
+        <Col lg={12} sm={24} style={{ display: "flex", alignItems: "center" }}>
           <Timeline
             items={timelineItems.map((item, index) => ({
               children: (
@@ -93,7 +89,7 @@ const TimelineComp = () => {
             }))}
           />
         </Col>
-        <Col lg={12} sm={24}>
+        <Col sm={24} lg={12} style={{ width: screens.sm ? "" : "100%" }}>
           <img
             src="https://images.pexels.com/photos/5095934/pexels-photo-5095934.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt=""
@@ -104,9 +100,11 @@ const TimelineComp = () => {
               width: "100%",
               height: screens.lg ? "100%" : "300px",
               inset: "0",
-              maxWidth: "100%",
               display: "block",
               verticalAlign: "middle",
+              boxShadow:
+                "rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px",
+              borderRadius: "20px",
             }}
           />
         </Col>

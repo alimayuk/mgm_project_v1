@@ -1,4 +1,5 @@
 import Navbar from "@/components/bars/Navbar/Navbar";
+import Footer from "@/components/Footer";
 import { ConfigProvider } from "antd";
 
 export default function DashboardLayout({ children }) {
@@ -19,6 +20,7 @@ export default function DashboardLayout({ children }) {
       >
         <Navbar />
         {children}
+        <Footer />
       </ConfigProvider>
     </>
   );
