@@ -1,7 +1,7 @@
 import React from "react";
 import { BsArrowDownCircleFill, BsCheckCircleFill } from "react-icons/bs";
 import { Col, ConfigProvider, Grid, Row, Timeline, Typography } from "antd";
-const { Title, Paragraph } = Typography;
+import TitleComp from "./TitleComp";
 
 const timelineItems = [
   {
@@ -43,7 +43,8 @@ const TimelineComp = () => {
   const { useBreakpoint } = Grid;
   const screens = useBreakpoint();
   return (
-    <ConfigProvider
+   <div>
+     <ConfigProvider
       theme={{
         token: {
           colorPrimary: "#BCBDBF",
@@ -57,16 +58,9 @@ const TimelineComp = () => {
         },
       }}
     >
-      <Title style={{ textAlign: "center" }}>Randevu Alma Adımları</Title>
-      <Paragraph
-        type="secondary"
-        style={{ textAlign: "center", fontSize: "20px" }}
-      >
-        Diş kliniğimizde randevu almak ve tedavi sürecini başlatmak çok kolay.
-        İşte adım adım nasıl ilerleyeceğiniz
-      </Paragraph>
+    <TitleComp title={"Randevu Alma Adımları"} subText={"Diş kliniğimizde randevu almak ve tedavi sürecini başlatmak çok kolay. İşte adım adım nasıl ilerleyeceğiniz"} />
       <Row gutter={[16, 16]}>
-        <Col lg={12} sm={24} style={{ display: "flex", alignItems: "center" }}>
+        <Col lg={12} sm={24} style={{ display: "flex", alignItems: "center", paddingLeft:"15px" }}>
           <Timeline
             items={timelineItems.map((item, index) => ({
               children: (
@@ -94,7 +88,7 @@ const TimelineComp = () => {
             src="https://images.pexels.com/photos/5095934/pexels-photo-5095934.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt=""
             style={{
-              position: "absolute",
+              position: screens.lg ? "absolute" : "relative",
               objectPosition: "top",
               objectFit: "cover",
               width: "100%",
@@ -110,6 +104,7 @@ const TimelineComp = () => {
         </Col>
       </Row>
     </ConfigProvider>
+   </div>
   );
 };
 

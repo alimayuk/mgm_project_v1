@@ -5,17 +5,18 @@ import ServiceCard from '@/components/ServiceComp';
 import StatisticComp from '@/components/StatisticComp';
 import TeamComp from '@/components/TeamComp';
 import TimelineComp from '@/components/Timeline';
+import { Flex } from 'antd';
 import React from 'react';
 const page = () => {
   return (
-    <div className='container'>
+    <Flex vertical gap={60} className='container'>
     <CarouselComp />
     <ServiceCard />
     <StatisticComp />
-    <BlogComp />
     <TimelineComp />
     <TeamComp />
-    </div>
+    <BlogComp />
+    </Flex>
   )
 }
 

@@ -27,7 +27,6 @@ const images = [
 const CarouselComp = React.memo(() => (
   <div
     style={{
-      margin: "0 auto 20px",
       borderRadius: "10px",
       overflow: "hidden",
     }}

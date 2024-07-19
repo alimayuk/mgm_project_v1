@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 * {
   margin: 0;
@@ -8,7 +8,7 @@
 
 body {
   background: #f3f4f6;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 :root {
@@ -47,7 +47,7 @@ li {
 .container {
   max-width: 1280px;
   margin: 10px auto 0;
-  padding: 0 5px;
+  padding: 0 8px;
 }
 
 .ant-drawer-header-title {
@@ -93,89 +93,89 @@ li {
   margin-right: 20px;
 }
 
-@media screen and (max-width: 767px) {
-  .ant-menu-item {
-    border-bottom: 1px solid #ccc;
-  }
-}
-
-.footer{
+.footer {
   padding: 60px 5px;
 }
 
-.footerTop{
+.footerTop {
   display: flex;
   justify-content: space-between;
   gap: 20px;
 }
-.footerTop p{
+.footerTop p {
   font-size: 14px;
   line-height: 25px;
 }
-.footerAbout{
+.footerAbout {
   flex: 1;
 }
 
-.footerLogo{
+.footerLogo {
   margin-bottom: 20px;
 }
 
-.footerAbout p{
+.footerAbout p {
   max-width: 400px;
 }
 
-.footerContactSocial{
+.footerContactSocial {
   flex: 1;
   display: flex;
   justify-content: space-between;
   gap: 25px;
 }
-.socialİcons{
+.socialİcons {
   display: flex;
   gap: 20px;
   font-size: 25px;
 }
-.footerTop h4{
+.footerTop h4 {
   margin-bottom: 10px;
 }
 
-.footerSocial p:last-child{
+.footerSocial p:last-child {
   max-width: 300px;
 }
 
-.footerBottom{
+.footerBottom {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
   font-size: 14px;
 }
 
-.footerPrivacyTerms{
+.footerPrivacyTerms {
   display: flex;
   gap: 20px;
 }
 
-@media screen and (max-width: 768px){
-.footerTop{
-  flex-direction: column;
-  gap: 40px;
-}
-.footerBottom{
-  gap: 20px;
-  flex-direction: column;
-}
-.footerBottom p{
-  text-align: center;
-}
-.footerPrivacyTerms {
-  display: inline-flex;
-  gap: 20px;
-justify-content: center;
+@media screen and (max-width: 768px) {
+  .logo {
+    width: 140px;
   }
-}
-@media screen and (max-width: 600px){
-  .footerContactSocial{
+  .ant-menu-item {
+    border-bottom: 1px solid #ccc;
+  }
+  .footerTop {
     flex-direction: column;
     gap: 40px;
   }
+  .footerBottom {
+    gap: 20px;
+    flex-direction: column;
   }
+  .footerBottom p {
+    text-align: center;
+  }
+  .footerPrivacyTerms {
+    display: inline-flex;
+    gap: 20px;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 600px) {
+  .footerContactSocial {
+    flex-direction: column;
+    gap: 40px;
+  }
+}

@@ -25,7 +25,7 @@ const StatisticComp = () => {
   const screens = useBreakpoint();
 
   return (
-    <>
+    <div>
       <Row gutter={[16, 16]}>
         <ConfigProvider
           theme={{
@@ -69,7 +69,7 @@ const StatisticComp = () => {
           ))}
         </ConfigProvider>
       </Row>
-    </>
+    </div>
   );
 };
 

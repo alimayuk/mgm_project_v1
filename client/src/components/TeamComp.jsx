@@ -4,7 +4,7 @@ import { Card, Col, Row } from "antd";
 const { Meta } = Card;
 const TeamComp = () => {
   return (
-    <>
+    <div>
       <TitleComp
         title={"Uzman ve Güvenilir Diş Hekimlerimiz"}
         subText={
@@ -105,7 +105,7 @@ const TeamComp = () => {
           </Card>
         </Col>
       </Row>
-    </>
+    </div>
   );
 };
 

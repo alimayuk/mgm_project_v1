@@ -1,19 +1,19 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Menu, Drawer, Button, ConfigProvider } from "antd";
+import { Menu, Drawer, Button} from "antd";
 import {
   MenuOutlined,
   HomeOutlined,
   InfoCircleOutlined,
-  SolutionOutlined,
+  PictureOutlined,
   MailOutlined,
 } from "@ant-design/icons";
 
 const items = [
-  { key: "home", icon: <HomeOutlined />, label: "Ana Sayfa" },
-  { key: "about", icon: <InfoCircleOutlined />, label: "Hakkımızda" },
-  { key: "services", icon: <SolutionOutlined />, label: "Hizmetler" },
-  { key: "contact", icon: <MailOutlined />, label: "İletişim" },
+  { key: "anasayfa", icon: <HomeOutlined />, label: <a href="/">Ana Sayfa</a> },
+  { key: "hakkimizda", icon: <InfoCircleOutlined />, label: <a href="/hakkimizda">Hakkımızda</a> },
+  { key: "galeri", icon: <PictureOutlined />, label: <a href="/galeri">Galeri</a> },
+  { key: "iletisim", icon: <MailOutlined />, label:<a href="/iletisim">İletişim</a>},
 ];
 
 const Navbar = () => {
@@ -30,7 +30,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 820) {
         setIsMobile(true);
       } else {
         setIsMobile(false);
@@ -48,7 +48,6 @@ const Navbar = () => {
   return (
       <div className="navbar">
         <img src="logo.svg" alt="" className="logo" />
-
         {!isMobile && (
           <div className="desktopMenu">
             <Menu
@@ -59,7 +58,7 @@ const Navbar = () => {
         )}
         <div className="menuIcon">
           <Button className="btnRandevu" type="primary">
-            Randevu
+            Randevu Al
           </Button>
           {isMobile && <MenuOutlined onClick={showDrawer} />}
         </div>

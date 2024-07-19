@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Col, Row, Typography } from "antd";
+import { Card, Col, Row } from "antd";
 import Meta from "antd/es/card/Meta";
 import { TbMoodKid } from "react-icons/tb";
 import { FaTooth } from "react-icons/fa6";
@@ -7,7 +7,7 @@ import { LiaTeethSolid } from "react-icons/lia";
 import { MdHealthAndSafety } from "react-icons/md";
 import { GiHealthCapsule } from "react-icons/gi";
 import { RiStethoscopeLine } from "react-icons/ri";
-const { Title, Paragraph } = Typography;
+import TitleComp from "./TitleComp";
 const items = [
   {
     title: "Genel Diş Hekimliği",
@@ -47,17 +47,13 @@ const items = [
   },
 ];
 const ServiceComp = () => (
-  <div style={{ margin: "10px 0" }}>
-    <Title style={{ textAlign: "center" }}>Hizmetler</Title>
-    <Paragraph
-      type="secondary"
-      style={{ textAlign: "center", fontSize: "20px" }}
-    >
-      Klinik olarak, diş sağlığınızı en üst düzeyde korumak ve tedavi etmek
-      amacıyla geniş bir hizmet yelpazesi sunuyoruz. Modern teknoloji ve
-      yenilikçi tedavi yöntemlerimizle, her yaştan hastamıza en iyi bakımı
-      sağlamak için buradayız.
-    </Paragraph>
+  <div>
+    <TitleComp
+      title={"Hizmetler"}
+      subText={
+        "Klinik olarak, diş sağlığınızı en üst düzeyde korumak ve tedavi etmek amacıyla geniş bir hizmet yelpazesi sunuyoruz. Modern teknoloji ve yenilikçi tedavi yöntemlerimizle, her yaştan hastamıza en iyi bakımı sağlamak için buradayız."
+      }
+    />
     <Row gutter={[16, 16]}>
       {items.map((item, i) => (
         <Col xs={24} sm={12} lg={8} key={i}>

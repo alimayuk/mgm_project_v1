@@ -1,7 +1,7 @@
 import React from "react";
-import { Card, Row, Col, Typography, Button } from "antd";
+import { Card, Row, Col, Button } from "antd";
+import TitleComp from "./TitleComp";
 const { Meta } = Card;
-const { Title } = Typography;
 const items = [
   {
     title: "Genel Diş Hekimliği",
@@ -23,19 +23,25 @@ const items = [
       "https://images.pexels.com/photos/3845685/pexels-photo-3845685.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     description:
       "Diş beyazlatma, porselen kaplama ve gülüş tasarımı gibi estetik çözümlerle daha güzel bir gülüşe sahip olmanızı sağlıyoruz.",
-  }];
+  },
+];
 
 const BlogComp = () => (
-  <>
-    <Title style={{ textAlign:"center" }}>Bloglar</Title>
-    <Row gutter={[16, 16]}>
+  <div>
+    <TitleComp
+      title={"Bloglar"}
+      subText={
+        "Diş sağlığı hakkında en güncel bilgiler, ipuçları ve tavsiyeler için bloglarımızı takip edin. Uzman diş hekimlerimiz tarafından hazırlanan makalelerle, ağız ve diş sağlığınızı en iyi şekilde korumanız için size rehberlik ediyoruz."
+      }
+    />
+    <Row gutter={[16, 16]} >
       {items.map((item, index) => (
         <Col xs={24} sm={12} lg={8} key={index}>
           <Card
             hoverable
             style={{
               height: "100%",
-                fontSize: "16px"
+              fontSize: "16px",
             }}
             cover={
               <img
@@ -50,10 +56,12 @@ const BlogComp = () => (
         </Col>
       ))}
     </Row>
-    <div style={{display:"flex", justifyContent:"center", marginTop: "10px" }}>
-    <Button  type="primary">Hepsi Gör</Button>
+    <div
+      style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}
+    >
+      <Button type="primary">Hepsi Gör</Button>
     </div>
-  </>
+  </div>
 );
 
 export default BlogComp;

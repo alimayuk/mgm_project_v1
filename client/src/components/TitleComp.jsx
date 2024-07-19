@@ -1,11 +1,11 @@
-import React from 'react'
-import { Typography } from 'antd';
+import React from "react";
+import { Typography } from "antd";
 const { Title, Paragraph } = Typography;
 
-const TitleComp = ({title,subText}) => {
+const TitleComp = ({ title, subText }) => {
   return (
-    <div>
-         <Title style={{ textAlign: "center" }}>{title}</Title>
+    <div style={{ marginBottom:"40px" }}>
+      <Title style={{ textAlign: "center" }}>{title}</Title>
       <Paragraph
         type="secondary"
         style={{ textAlign: "center", fontSize: "20px" }}
@@ -13,7 +13,7 @@ const TitleComp = ({title,subText}) => {
         {subText}
       </Paragraph>
     </div>
-  )
-}
+  );
+};
 
-export default TitleComp
+export default TitleComp;
