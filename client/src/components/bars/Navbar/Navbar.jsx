@@ -7,11 +7,13 @@ import {
   InfoCircleOutlined,
   PictureOutlined,
   MailOutlined,
+  BookOutlined
 } from "@ant-design/icons";
 
 const items = [
   { key: "anasayfa", icon: <HomeOutlined />, label: <a href="/">Ana Sayfa</a> },
   { key: "hakkimizda", icon: <InfoCircleOutlined />, label: <a href="/hakkimizda">Hakkımızda</a> },
+  { key: "bloglar", icon: <BookOutlined />, label: <a href="/bloglar">Bloglar</a> },
   { key: "galeri", icon: <PictureOutlined />, label: <a href="/galeri">Galeri</a> },
   { key: "iletisim", icon: <MailOutlined />, label:<a href="/iletisim">İletişim</a>},
 ];
@@ -19,6 +21,7 @@ const items = [
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  
 
   const showDrawer = () => {
     setVisible(true);
@@ -30,7 +33,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 820) {
+      if (window.innerWidth < 992) {
         setIsMobile(true);
       } else {
         setIsMobile(false);
@@ -53,6 +56,9 @@ const Navbar = () => {
             <Menu
               mode="horizontal"
               items={items}
+              style={{ 
+                display:"block"
+               }}
             />
           </div>
         )}
@@ -76,7 +82,7 @@ const Navbar = () => {
             },
           }}
         >
-          <Menu width={"100%"} mode="vertical" items={items} />
+          <Menu width={"100%"} mode="vertical" items={items}  />
         </Drawer>
       </div>
   );

@@ -1,22 +1,22 @@
 import React from "react";
 import { Card, Col, ConfigProvider, Row, Grid } from "antd";
-
+import CountUp from "react-countup";
 const items = [
   {
     title: "TEDAVI EDILEN HASTA SAYISI",
-    stat: "5000+",
+    stat: 5000,
   },
   {
     title: "YILLIK DENEYIM",
-    stat: "5+",
+    stat: 5,
   },
   {
     title: "YILLIK RANDEVU SAYISI",
-    stat: "1200+",
+    stat: 1200,
   },
   {
     title: "UZMAN HEKIM",
-    stat: "12+",
+    stat: 12,
   },
 ];
 
@@ -61,7 +61,21 @@ const StatisticComp = () => {
                       : "1px solid",
                 }}
                 bordered={false}
-                title={item.stat}
+                title={
+                  <CountUp
+                    start={0}
+                    end={item.stat}
+                    enableScrollSpy={true}
+                    scrollSpyOnce={true}
+                    suffix="+"
+                  >
+                    {({ countUpRef }) => (
+                      <div>
+                        <span ref={countUpRef} />
+                      </div>
+                    )}
+                  </CountUp>
+                }
               >
                 <p>{item.title}</p>
               </Card>

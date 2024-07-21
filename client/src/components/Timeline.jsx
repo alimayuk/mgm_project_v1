@@ -1,6 +1,6 @@
 import React from "react";
 import { BsArrowDownCircleFill, BsCheckCircleFill } from "react-icons/bs";
-import { Col, ConfigProvider, Grid, Row, Timeline, Typography } from "antd";
+import { Col, ConfigProvider, Grid, Row, Timeline } from "antd";
 import TitleComp from "./TitleComp";
 
 const timelineItems = [
