@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { Card, Row, Col, Button, Badge } from "antd";
 import TitleComp from "./TitleComp";

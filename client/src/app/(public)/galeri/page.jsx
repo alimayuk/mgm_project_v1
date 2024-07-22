@@ -1,8 +1,11 @@
+import GalleryComp from '@/components/GalleryComp'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>page</div>
+    <div className='container'>
+      <GalleryComp />
+    </div>
   )
 }
 
