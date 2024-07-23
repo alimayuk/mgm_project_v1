@@ -24,13 +24,12 @@ const GalleryComp = () => {
       <Image.PreviewGroup>
         <Row gutter={[16, 16]}>
           {images.map((src, index) => (
-            <Col xs={24} sm={12} lg={8} xl={6}>
+            <Col xs={24} sm={12} lg={8} xl={6} style={{ justifyContent:"center", display:"flex" }} key={index}>
             <Image
               alt={`Image ${index + 1}`}
               src={src}
               width={300}
               height={300}
-              key={index}
               style={{ 
                 objectFit:"cover"
                }}

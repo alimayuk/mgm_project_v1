@@ -5,7 +5,6 @@ const page = () => {
   return (
     <div className='container'>
       <BlogComp />
-      
     </div>
   )
 }

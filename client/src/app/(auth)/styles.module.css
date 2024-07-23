@@ -1,42 +1,5 @@
-.wrapper {
-  display: flex;
-  width: 100%;
-  height: 100vh;
-  justify-content: space-between;
-}
-
-.wrapper div {
-  flex: 1;
-}
-.wrapper {
-  display: flex;
-  min-height: 100vh;
-}
-
 .imageSide {
-  background-image: url('https://images.pexels.com/photos/1327689/pexels-photo-1327689.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  background-image: url("https://images.pexels.com/photos/1327689/pexels-photo-1327689.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   background-size: cover;
   background-position: center;
-}
-
-.formSide {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 10px;
-  height: 100%;
-}
-
-.formContainer {
-  max-width: 600px; 
-  padding: 20px;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px; 
-}
-
-@media (max-width: 767px) {
-  .imageSide {
-    display: none;
-  }
 }

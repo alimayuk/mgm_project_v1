@@ -5,15 +5,19 @@ import LoginForm from "@/components/auth/LoginForm";
 
 const Page = () => {
   return (
-    <Flex gap="large" className={styles.wrapper} >
+    <Row gutter={[16, 16]} style={{ minHeight: "100vh", maxWidth: "100%" }}>
       <Col xs={0} md={12} className={styles.imageSide}></Col>
-      <Flex xs={0} md={12} className={styles.formSide}>
-        <Flex className={styles.formContainer}>
+      <Col xs={24} md={12} >
+        <Flex
+          style={{ width: "100%", height: "100%" }}
+          align="center"
+          justify="center"
+        >
           <LoginForm />
         </Flex>
-      </Flex>
-    </Flex>
-  );  
+      </Col>
+    </Row>
+  );
 };
 
 export default Page;
