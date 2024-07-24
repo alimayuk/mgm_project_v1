@@ -1,6 +1,7 @@
 "use client";
 import CollapseComp from "@/components/CollapseComp";
 import ServiceComp from "@/components/ServiceComp";
+import TeamComp from "@/components/TeamComp";
 import { Col, Flex, Grid, Row, Typography } from "antd";
 import React from "react";
 const { Title, Paragraph } = Typography;
@@ -61,6 +62,7 @@ const page = () => {
           />
         </Col>
       </Row>
+      <TeamComp />
       <CollapseComp />
       <ServiceComp />
     </Flex>

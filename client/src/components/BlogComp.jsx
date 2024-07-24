@@ -101,7 +101,7 @@ const BlogComp = () => (
     <div
       style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}
     >
-      <Button type="primary">Hepsi Gör</Button>
+      <Button href="/bloglar" type="primary">Hepsi Gör</Button>
     </div>
   </div>
 );
