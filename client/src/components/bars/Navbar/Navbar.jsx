@@ -63,7 +63,7 @@ const Navbar = () => {
           </div>
         )}
         <div className="menuIcon">
-          <Button className="btnRandevu" type="primary">
+          <Button href="/randevu-al" className="btnRandevu" type="primary">
             Randevu Al
           </Button>
           {isMobile && <MenuOutlined onClick={showDrawer} />}

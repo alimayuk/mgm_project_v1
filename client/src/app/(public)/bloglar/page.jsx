@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { Badge, Card, Col, List } from "antd";
+import TitleComp from "@/components/TitleComp";
 const { Meta } = Card;
 const items = [
   {
@@ -105,6 +106,7 @@ const Page = () => {
 
   return (
     <div className="container">
+    <TitleComp title={"Blog"} subText={"Diş sağlığı hakkında en güncel bilgiler, ipuçları ve uzman tavsiyeleri. Sağlıklı bir gülüş için bilinmesi gereken her şey burada."} />
       <List
         grid={{
           gutter: [16, 16],

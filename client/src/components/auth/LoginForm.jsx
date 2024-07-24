@@ -110,9 +110,9 @@ const LoginForm = () => {
             Giriş Yap
           </Button>
         </Form.Item>
-        <Form.Item>
+        {/* <Form.Item>
           Hesabınız yok mu? <a href="/kayit-ol">Kayıt Ol</a>
-        </Form.Item>
+        </Form.Item> */}
       </Form>
     </div>
   );
