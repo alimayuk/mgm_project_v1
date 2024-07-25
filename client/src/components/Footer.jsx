@@ -1,6 +1,7 @@
 import { Divider } from "antd";
 import React from "react";
-import { FaFacebook, FaInstagramSquare, FaTwitter } from "react-icons/fa";
+import { BsTwitterX } from "react-icons/bs";
+import { FaFacebook,FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -27,10 +28,10 @@ const Footer = () => {
                 <FaFacebook />
               </a>
               <a href="https://www.instagram.com/mgm_uzmanlik/">
-                <FaInstagramSquare />
+              <FaInstagram />
               </a>
               <a href="https://twitter.com/mgm_uzmanlik">
-                <FaTwitter />
+              <BsTwitterX />
               </a>
             </div>
             <p>

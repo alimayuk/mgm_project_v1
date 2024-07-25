@@ -3,25 +3,35 @@ import {
   Button,
   Col,
   ConfigProvider,
-  Flex,
   Form,
   Input,
   Row,
   Typography,
   DatePicker,
   Select,
-  TimePicker,
 } from "antd";
-import { MailOutlined, SendOutlined, PhoneOutlined } from "@ant-design/icons";
+import {SendOutlined} from "@ant-design/icons";
 import React from "react";
 import locale from "antd/locale/tr_TR";
 import dayjs from "dayjs";
 import "dayjs/locale/tr";
+import moment from 'moment';
 
-const { Title, Paragraph, Link } = Typography;
+const { Title, Paragraph } = Typography;
 dayjs.locale("tr");
+
+const disabledDate = (current) => {
+  // Disable dates before today and weekends (Saturday and Sunday)
+  return (
+    current && 
+    (current < moment().startOf('day') || 
+     current.day() === 6 || 
+     current.day() === 0)
+  );
+};
 const dateFormat = "DD/MM/YYYY";
 const timeFormat = "HH:mm";
+
 const page = () => {
   return (
     <div className="container">
@@ -53,30 +63,17 @@ const page = () => {
               <Form.Item>
                 <Select
                   showSearch
-                  placeholder="Personel Ara"
+                  placeholder="Hekim Ara"
                   style={{ display: "block", marginBottom: "10px" }}
                 />
               </Form.Item>
               <Form.Item>
                 <DatePicker
                   format={dateFormat}
-                  style={{ marginBottom: "20px", marginRight: "20px" }}
-                />
-                <TimePicker
-                  format={timeFormat}
-                  minuteStep={30}
-                  showNow={false}
-                  use12Hours={false}
-                  placeholder="Başlangıç Saati"
-                  style={{ marginBottom: "20px", marginRight: "20px" }}
-                />
-                <TimePicker
-                  format={timeFormat}
-                  minuteStep={30}
-                  showNow={false}
-                  use12Hours={false}
-                  placeholder="Bitiş Saati"
-                  style={{ marginBottom: "20px" }}
+                  disabledDate={disabledDate}
+                  style={{ 
+                    width: "100%"
+                   }}
                 />
               </Form.Item>
               <Form.Item>
