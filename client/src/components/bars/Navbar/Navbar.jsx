@@ -50,7 +50,7 @@ const Navbar = () => {
 
   return (
       <div className="navbar">
-        <img src="logo.svg" alt="" className="logo" />
+        <a href="/"><img src="logo.svg" alt="" className="logo" /></a>
         {!isMobile && (
           <div className="desktopMenu">
             <Menu

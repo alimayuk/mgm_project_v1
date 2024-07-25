@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Card, Col, Row } from "antd";
 import Meta from "antd/es/card/Meta";

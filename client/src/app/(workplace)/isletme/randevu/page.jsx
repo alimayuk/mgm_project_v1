@@ -1,11 +1,9 @@
-"use client"
-import RezervationPage from '@/components/rezervations/RezervationPage'
-import classNames from 'classnames'
+import RezervationPage from '@/components/workplace/RezervationPage'
 import React from 'react'
 
 const page = () => {
   return (
-    <div className={classNames("container")}>
+    <div className="container">
       <RezervationPage />
     </div>
   )

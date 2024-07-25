@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import TitleComp from "./TitleComp";
 import { Card, Col, Row } from "antd";

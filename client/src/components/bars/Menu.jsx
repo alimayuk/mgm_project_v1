@@ -1,40 +1,56 @@
-"use client"
-import React, { useState } from 'react';
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
-import { Menu } from 'antd';
+"use client";
+import React, { useState } from "react";
+import {
+  AppstoreOutlined,
+  MailOutlined,
+  SettingOutlined,
+} from "@ant-design/icons";
+import { Menu } from "antd";
 const items = [
   {
-    key: '1',
+    key: "1",
     icon: <MailOutlined />,
-    label: <a href='/isletme'>Anasayfa</a>,
-   },
-  {
-    key: '2',
-    icon: <AppstoreOutlined />,
-    label: <a href='/isletme/randevu'>Randevular</a>,
+    label: <a href="/isletme">Anasayfa</a>,
   },
   {
-    key: '3',
+    key: "2",
+    icon: <AppstoreOutlined />,
+    label: <a href="/isletme/randevu">Randevular</a>,
+  },
+  {
+    key: "321",
+    icon: <AppstoreOutlined />,
+    label: <a href="/isletme/randevu">Randevu İstekleri</a>,
+  },
+  {
+    key: "3",
     icon: <SettingOutlined />,
-    label: 'Navigation Three',
+    label: "Blog Yazıları",
     children: [
       {
-        key: '31',
-        label: 'Option 1',
+        key: "31",
+        label: "Blog Oluştur",
       },
       {
-        key: '32',
-        label: 'Option 2',
-      },
-      {
-        key: '33',
-        label: 'Option 3',
-      },
-      {
-        key: '34',
-        label: 'Option 4',
+        key: "32",
+        label: "Blogları Listele",
       },
     ],
+  },
+  {
+    key: "4",
+    icon: <AppstoreOutlined />,
+    label: <a href="/isletme/galeri">Galeri</a>,
+  },
+  {
+    key: "5",
+    icon: <AppstoreOutlined />,
+    label: <a href="/isletme/calisanlar">Çalışanlar</a>,
+  },,
+  {
+    key: "6",
+    icon: <AppstoreOutlined />,
+    label: <a href="/isletme/ayarlar">Ayarlar</a>,
   },
 ];
 const getLevelKeys = (items1) => {
@@ -54,9 +70,11 @@ const getLevelKeys = (items1) => {
 };
 const levelKeys = getLevelKeys(items);
 const MenuComp = () => {
-  const [stateOpenKeys, setStateOpenKeys] = useState(['2', '23']);
+  const [stateOpenKeys, setStateOpenKeys] = useState(["2", "23"]);
   const onOpenChange = (openKeys) => {
-    const currentOpenKey = openKeys.find((key) => stateOpenKeys.indexOf(key) === -1);
+    const currentOpenKey = openKeys.find(
+      (key) => stateOpenKeys.indexOf(key) === -1
+    );
     // open
     if (currentOpenKey !== undefined) {
       const repeatIndex = openKeys
@@ -67,7 +85,7 @@ const MenuComp = () => {
           // remove repeat key
           .filter((_, index) => index !== repeatIndex)
           // remove current level all child
-          .filter((key) => levelKeys[key] <= levelKeys[currentOpenKey]),
+          .filter((key) => levelKeys[key] <= levelKeys[currentOpenKey])
       );
     } else {
       // close

@@ -69,7 +69,7 @@ const LoginForm = () => {
         onFinishFailed={onFinishFailed}
         autoComplete="on"
       >
-        <Title level={1}>Yönetim Giriş</Title>
+        <Title level={1}>Yönetici Giriş</Title>
         <Form.Item
           label="E-posta"
           name="email"
