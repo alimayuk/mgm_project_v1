@@ -1,5 +1,5 @@
-"use client"
-import {ConfigProvider } from "antd";
+"use client";
+import { ConfigProvider } from "antd";
 import React from "react";
 import locale from "antd/locale/tr_TR";
 import dayjs from "dayjs";
@@ -11,7 +11,7 @@ const RezervationPage = () => {
   return (
     <div>
       <ConfigProvider locale={locale}>
-      <CalendarComp />
+        <CalendarComp />
       </ConfigProvider>
     </div>
   );
