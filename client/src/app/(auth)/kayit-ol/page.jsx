@@ -1,7 +1,6 @@
 "use client";
 import { Button, Col, Flex, Form, Input, notification, Row, Typography } from "antd";
 import React, { useState } from "react";
-import styles from "../styles.module.css";
 import { useRouter } from "next/navigation";
 import { useCreateUserMutation } from "@/lib/services/auth";
 import ResNotification from "@/components/notifications/ResNotification";
@@ -173,7 +172,7 @@ const page = () => {
           </div>
         </Flex>
       </Col>
-      <Col xs={0} md={12} className={styles.imageSide}></Col>
+      <Col xs={0} md={12} className="imageSide"></Col>
     </Row>
   );
 };

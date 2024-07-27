@@ -1,0 +1,30 @@
+@media screen and (max-width: 768px) {
+  .logo {
+    width: 140px;
+  }
+  .ant-menu-item {
+    border-bottom: 1px solid #ccc;
+  }
+  .footerTop {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .footerBottom {
+    gap: 20px;
+    flex-direction: column;
+  }
+  .footerBottom p {
+    text-align: center;
+  }
+  .footerPrivacyTerms {
+    display: inline-flex;
+    gap: 20px;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 600px) {
+  .footerContactSocial {
+    flex-direction: column;
+    gap: 40px;
+  }
+}

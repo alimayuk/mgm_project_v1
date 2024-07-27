@@ -1,4 +1,4 @@
-import PaginationComp from '@/components/PaginationComp'
+import PaginationComp from '@/components/public/PaginationComp'
 import React from 'react'
 
 const page = () => {

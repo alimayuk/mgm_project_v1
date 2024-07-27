@@ -1,0 +1,20 @@
+.ant-menu {
+  border-bottom: none !important;
+}
+
+.ant-drawer-header-title {
+  flex-direction: row-reverse;
+}
+
+.ant-menu-item::after {
+  position: static !important;
+  inset-inline: 0 !important;
+  bottom: 0 !important;
+  border-bottom: 0 !important;
+  border-color: transparent !important;
+  content: "" !important;
+}
+.ant-menu-item:hover::after {
+  border-bottom-width: 0 !important;
+  border-bottom-color: transparent !important;
+}

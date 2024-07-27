@@ -1,5 +1,7 @@
 import { AntdRegistry } from "@ant-design/nextjs-registry";
-import "./globals.css";
+import "./css/globals.css";
+import "./css/responsive.css";
+import "./css/antDesingCustom.css";
 import StoreProvider from "./StoreProvider";
 export const metadata = {
   title: "MGM",

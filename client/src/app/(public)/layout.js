@@ -1,6 +1,6 @@
-import Navbar from "@/components/bars/Navbar/Navbar";
-import BreadCrumbComp from "@/components/BreadCrumbComp";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/bars/public/Navbar";
+import BreadCrumbComp from "@/components/public/BreadCrumbComp";
+import Footer from "@/components/public/Footer";
 import { ConfigProvider } from "antd";
 
 export default function DashboardLayout({ children }) {
@@ -26,7 +26,6 @@ export default function DashboardLayout({ children }) {
       >
         <Navbar />
         <BreadCrumbComp />
-
         {children}
         <Footer />
       </ConfigProvider>

@@ -1,4 +1,4 @@
-import Navbar from "@/components/bars/WorkPlaceHeader";
+import Navbar from "@/components/bars/workplace/WorkPlaceHeader";
 
 export default function WorkPlaceLayout({ children }) {
   return (

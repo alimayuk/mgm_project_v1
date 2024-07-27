@@ -1,7 +1,7 @@
-import AboutUsCard from "@/components/AboutUsCard";
-import CollapseComp from "@/components/CollapseComp";
-import ServiceComp from "@/components/ServiceComp";
-import TeamComp from "@/components/TeamComp";
+import AboutUsCard from "@/components/public/AboutUsCard";
+import CollapseComp from "@/components/public/CollapseComp";
+import ServiceComp from "@/components/public/ServiceComp";
+import TeamComp from "@/components/public/TeamComp";
 import { Flex } from "antd";
 import React from "react";
 const page = () => {

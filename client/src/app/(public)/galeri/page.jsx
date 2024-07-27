@@ -1,4 +1,4 @@
-import GalleryComp from '@/components/GalleryComp'
+import GalleryComp from '@/components/public/GalleryComp'
 import React from 'react'
 
 const page = () => {

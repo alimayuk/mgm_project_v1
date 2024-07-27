@@ -1,10 +1,10 @@
 "use client"
-import BlogComp from '@/components/BlogComp';
-import CarouselComp from '@/components/CarouselComp';
-import ServiceCard from '@/components/ServiceComp';
-import StatisticComp from '@/components/StatisticComp';
-import TeamComp from '@/components/TeamComp';
-import TimelineComp from '@/components/Timeline';
+import BlogComp from '@/components/public/BlogComp';
+import CarouselComp from '@/components/public/CarouselComp';
+import ServiceCard from '@/components/public/ServiceComp';
+import StatisticComp from '@/components/public/StatisticComp';
+import TeamComp from '@/components/public/TeamComp';
+import TimelineComp from '@/components/public/Timeline';
 import { Flex } from 'antd';
 import React from 'react';
 const page = () => {

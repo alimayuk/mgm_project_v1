@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Table, ConfigProvider, Checkbox, Avatar } from 'antd';
 import trTR from 'antd/lib/locale/tr_TR';
+import { UserOutlined } from '@ant-design/icons';
 
 const columns = (handleCheckboxChange) => [
   {
@@ -98,14 +99,14 @@ const columns = (handleCheckboxChange) => [
   {
     title: 'Fotoğraf',
     dataIndex: 'photo',
-    render: (photo) => (photo ? <Avatar src={photo} /> : <Avatar icon="user" />),
+    render: (photo) => (photo ? <Avatar src={photo} /> : <Avatar icon={<UserOutlined />} />),
   },
 ];
 
 const initialData  = [
     {
       key: '1',
-      name: 'Ali Yılmaz',
+      name: 'Ali Yılmaz ',
       age: 32,
       position: 'Diş Hekimi',
       city: 'İstanbul',

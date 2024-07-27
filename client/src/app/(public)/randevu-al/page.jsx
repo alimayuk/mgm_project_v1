@@ -1,4 +1,4 @@
-import UserDateComp from '@/components/UserDateComp'
+import UserDateComp from '@/components/public/UserDateComp'
 import React from 'react'
 
 const page = () => {

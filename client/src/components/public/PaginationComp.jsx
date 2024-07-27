@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { Badge, Card,List } from "antd";
-import TitleComp from "@/components/TitleComp";
+import TitleComp from "@/components/public/TitleComp";
 const { Meta } = Card;
 const items = [
   {

@@ -15,18 +15,10 @@ import React from "react";
 import locale from "antd/locale/tr_TR";
 import dayjs from "dayjs";
 import "dayjs/locale/tr";
-import moment from "moment";
+dayjs.locale("tr");
 
 const { Title, Paragraph } = Typography;
-dayjs.locale("tr");
-const disabledDate2 = (current) => {
-  return (
-    current &&
-    (current < moment().startOf("day") ||
-      current.day() === 6 ||
-      current.day() === 0)
-  );
-};
+
 const disabledDate = (current) => {
   // Bugünden önceki günleri seçilemez yapar
   return  (current &&(
