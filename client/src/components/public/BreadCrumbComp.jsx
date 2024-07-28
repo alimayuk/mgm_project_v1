@@ -5,11 +5,19 @@ import React from "react";
 
 const BreadCrumbComp = () => {
   const pathname = usePathname();
-  const pathSnippets = pathname.split("/").filter((i) => i);
+  let pathSnippets = pathname.split("/").filter((i) => i);
+
+  // Eğer 'bloglar' varsa, ondan sonrasını çıkart
+  const blogIndex = pathSnippets.indexOf("bloglar");
+  if (blogIndex !== -1) {
+    pathSnippets = pathSnippets.slice(0, blogIndex + 1);
+  }
+
   const nameMap = {
     "randevu-al": "Randevu Al",
     "iletisim": "İletişim",
   };
+
   const breadcrumbItems = [
     {
       href: "/",
