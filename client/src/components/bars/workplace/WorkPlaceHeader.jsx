@@ -1,11 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import { Drawer, theme } from "antd";
+import { Drawer} from "antd";
 import MenuComp from "./MenuComp";
 import { BarsOutlined } from "@ant-design/icons";
 
 const Navbar = ({ children }) => {
-  const { token } = theme.useToken();
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
     setOpen(true);

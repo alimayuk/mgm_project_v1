@@ -10,10 +10,12 @@ import {
   Form,
   Input,
   Select,
+  Upload,
+  Grid,
 } from "antd";
 import trTR from "antd/lib/locale/tr_TR";
-import { UserOutlined } from "@ant-design/icons";
-
+import { UserOutlined, UploadOutlined } from "@ant-design/icons";
+const { useBreakpoint } = Grid;
 const columns = (handleCheckboxChange, showModal) => [
   {
     title: "Ad Soyad",
@@ -467,19 +469,17 @@ const initialData = [
 const StaffTable = () => {
   const [data, setData] = useState(initialData);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentRecord, setCurrentRecord] = useState(null);
   const [form] = Form.useForm();
+  const [currentRecord, setCurrentRecord] = useState(null);
+  const screen = useBreakpoint();
 
   const showModal = (record) => {
-    setCurrentRecord(record);
-    setIsModalOpen(true);
+    setCurrentRecord(record || null);
+    form.resetFields();
     if (record) {
       form.setFieldsValue(record);
-      console.log("Güncelleme için açılan modal:", record);
-    } else {
-      form.resetFields();
-      console.log("Yeni ekleme için açılan modal.");
     }
+    setIsModalOpen(true);
   };
 
   const handleOk = () => {
@@ -517,8 +517,6 @@ const StaffTable = () => {
 
   const handleCancel = () => {
     setIsModalOpen(false);
-    setCurrentRecord(null);
-    form.resetFields();
   };
 
   const handleCheckboxChange = (key, field) => {
@@ -534,21 +532,41 @@ const StaffTable = () => {
   return (
     <ConfigProvider locale={trTR}>
       <>
-        <Button type="primary" onClick={() => showModal(null)}>
+        <Button
+          type="primary"
+          style={{ margin: "20px 20px " }}
+          onClick={() => showModal()}
+        >
           Çalışan Ekle
         </Button>
         <Modal
-          title={currentRecord ? "Çalışanı Düzenle" : "Çalışan Ekle"}
+          title="Çalışan Ekle"
           open={isModalOpen}
           onOk={handleOk}
           onCancel={handleCancel}
-          width={"60%"}
+          width={screen.sm ? "60%" : "90%"}
+          style={{
+            top: "30px",
+          }}
+          footer={[
+            <Button key="back" onClick={handleCancel}>
+              İptal
+            </Button>,
+            currentRecord && (
+              <Button key="remove" onClick={handleOk} type="primary">
+                Kaldır
+              </Button>
+            ),
+            <Button key="submit" onClick={handleOk} type="primary">
+              Kaydet
+            </Button>,
+          ]}
         >
-          <Form layout="vertical" form={form}>
+          <Form form={form} layout="vertical">
             <Form.Item
               label="Ad Soyad"
               name="name"
-              rules={[{ required: true, message: "Lütfen ad soyad giriniz" }]}
+              rules={[{ required: true, message: "Lütfen adı soyadı girin!" }]}
             >
               <Input />
             </Form.Item>
@@ -556,7 +574,7 @@ const StaffTable = () => {
               label="Telefon No"
               name="contact"
               rules={[
-                { required: true, message: "Lütfen telefon numarası giriniz" },
+                { required: true, message: "Lütfen telefon numarasını girin!" },
               ]}
             >
               <Input />
@@ -564,34 +582,33 @@ const StaffTable = () => {
             <Form.Item
               label="E-posta"
               name="email"
-              rules={[{ required: true, message: "Lütfen e-posta giriniz" }]}
+              rules={[{ type: "email", message: "Geçerli bir e-posta girin!" }]}
             >
               <Input />
             </Form.Item>
             <Form.Item
               label="Yaş"
               name="age"
-              rules={[{ required: true, message: "Lütfen yaş giriniz" }]}
+              rules={[{ required: true, message: "Lütfen yaşı girin!" }]}
             >
               <Input />
             </Form.Item>
             <Form.Item
               label="Deneyim"
               name="experience"
-              rules={[
-                { required: true, message: "Lütfen deneyim yılı giriniz" },
-              ]}
+              rules={[{ required: true, message: "Lütfen deneyimi girin!" }]}
             >
               <Input />
             </Form.Item>
             <Form.Item
               label="Şehir"
               name="city"
-              rules={[{ required: true, message: "Lütfen şehir seçiniz" }]}
+              rules={[{ required: true, message: "Lütfen şehri seçin!" }]}
             >
               <Select>
                 <Select.Option value="İstanbul">İstanbul</Select.Option>
                 <Select.Option value="Ankara">Ankara</Select.Option>
+                <Select.Option value="İzmir">İzmir</Select.Option>
                 <Select.Option value="Bursa">Bursa</Select.Option>
                 <Select.Option value="Konya">Konya</Select.Option>
                 <Select.Option value="Adana">Adana</Select.Option>
@@ -604,7 +621,7 @@ const StaffTable = () => {
             <Form.Item
               label="Klinik"
               name="clinic"
-              rules={[{ required: true, message: "Lütfen klinik seçiniz" }]}
+              rules={[{ required: true, message: "Lütfen kliniği seçin!" }]}
             >
               <Select>
                 <Select.Option value="A Klinik">A Klinik</Select.Option>
@@ -615,17 +632,30 @@ const StaffTable = () => {
             <Form.Item
               label="Web Sitesinde Göster"
               name="showOnWebsite"
-              rules={[
-                { required: true, message: "Lütfen bir seçenek belirleyiniz" },
-              ]}
+              rules={[{ required: true, message: "Lütfen seçim yapın!" }]}
             >
               <Select>
-                <Select.Option value={true}>Evet</Select.Option>
-                <Select.Option value={false}>Hayır</Select.Option>
+                <Select.Option value="Evet">Evet</Select.Option>
+                <Select.Option value="Hayır">Hayır</Select.Option>
               </Select>
             </Form.Item>
-            <Form.Item label="Fotoğraf" name="photo">
-              <Input type="file" />
+            <Form.Item
+              name="avatar"
+              label="Avatar"
+              valuePropName="fileList"
+              getValueFromEvent={(e) =>
+                Array.isArray(e) ? e : e && e.fileList
+              }
+            >
+              <Upload
+                listType="picture-card"
+                beforeUpload={() => false}
+                maxCount={1}
+              >
+                <div>
+                  <Button icon={<UploadOutlined />}></Button>
+                </div>
+              </Upload>
             </Form.Item>
           </Form>
         </Modal>
