@@ -2,13 +2,12 @@ import { Divider } from "antd";
 import React from "react";
 import { BsTwitterX } from "react-icons/bs";
 import { FaFacebook,FaInstagram } from "react-icons/fa";
-
 const Footer = () => {
   return (
     <div className="container footer">
       <div className="footerTop">
         <div className="footerAbout">
-          <img src="logo.svg" alt="Logo" className="footerLogo" />
+        <img src="/logo.svg" alt="Logo" className="footerLogo" />
           <p>
             Uzman ekibimiz ve modern teknoloji ile diş sağlığınızı önemsiyoruz.
             Her hastamız için kişiselleştirilmiş tedavi planları sunuyoruz.

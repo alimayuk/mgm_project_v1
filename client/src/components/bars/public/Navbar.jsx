@@ -9,19 +9,21 @@ import {
   MailOutlined,
   BookOutlined
 } from "@ant-design/icons";
-
-const items = [
-  { key: "anasayfa", icon: <HomeOutlined />, label: <a href="/">Ana Sayfa</a> },
-  { key: "hakkimizda", icon: <InfoCircleOutlined />, label: <a href="/hakkimizda">Hakkımızda</a> },
-  { key: "bloglar", icon: <BookOutlined />, label: <a href="/bloglar">Bloglar</a> },
-  { key: "galeri", icon: <PictureOutlined />, label: <a href="/galeri">Galeri</a> },
-  { key: "iletisim", icon: <MailOutlined />, label:<a href="/iletisim">İletişim</a>},
-];
+import LocaleSwitcher from "../langueswitcher/LocaleSwitcher";
+import { useTranslations } from "next-intl";
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  
+  const t = useTranslations("Navbar");
+
+  const items = [
+    { key: "anasayfa", icon: <HomeOutlined />, label: <a href="/">{t("home")}</a> },
+    { key: "hakkimizda", icon: <InfoCircleOutlined />, label: <a href="/hakkimizda">{t("about")}</a> },
+    { key: "bloglar", icon: <BookOutlined />, label: <a href="/bloglar">{t("blogs")}</a> },
+    { key: "galeri", icon: <PictureOutlined />, label: <a href="/galeri">{t("gallery")}</a> },
+    { key: "iletisim", icon: <MailOutlined />, label:<a href="/iletisim">{t("contact")}</a>},
+  ];
 
   const showDrawer = () => {
     setVisible(true);
@@ -50,7 +52,7 @@ const Navbar = () => {
 
   return (
       <div className="navbar">
-        <a href="/"><img src="logo.svg" alt="" className="logo" /></a>
+        <a href="/"><img src="/logo.svg" alt="" className="logo" /></a>
         {!isMobile && (
           <div className="desktopMenu">
             <Menu
@@ -62,10 +64,11 @@ const Navbar = () => {
             />
           </div>
         )}
-        <div className="menuIcon">
+        <div className="menuIcon" style={{ display:"flex", alignItems:"center" }}>
           <Button href="/randevu-al" className="btnRandevu" type="primary">
             Randevu Al
           </Button>
+          <LocaleSwitcher />
           {isMobile && <MenuOutlined onClick={showDrawer} />}
         </div>
         <Drawer

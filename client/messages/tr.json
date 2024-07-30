@@ -1,0 +1,37 @@
+{
+  "Navbar": {
+    "home": "Ana Sayfa",
+    "about": "Hakkımızda",
+    "contact": "İletişim",
+    "blogs": "Bloglar",
+    "gallery": "Galeri"
+  },
+  "AppLayout": {
+    "home": "Ana Sayfa",
+    "logout": "Çıkış Yap",
+    "profile": "Profil"
+  },
+  "HomePage": {
+    "title": "Ana Sayfa"
+  },
+  "LocaleSwitcher": {
+    "de": "DE",
+    "en": "EN",
+    "tr": "TR",
+    "label": "Dil"
+  },
+  "LoginPage": {
+    "credentials": "Giriş Bilgileri: jane@doe.com / next-intl",
+    "description": "Lütfen bilgilerinizi giriniz.",
+    "email": "E-posta",
+    "invalidCredentials": "Lütfen giriş bilgilerinizi kontrol edin.",
+    "invalidEmail": "Lütfen geçerli bir e-posta adresi girin.",
+    "invalidPassword": "Lütfen bir şifre girin.",
+    "login": "Giriş Yap",
+    "password": "Şifre",
+    "title": "Tekrar hoş geldiniz"
+  },
+  "ProfilePage": {
+    "title": "Profil"
+  }
+}
