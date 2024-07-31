@@ -58,6 +58,13 @@ const UserDateComp = () => {
               <Form.Item>
                 <Select
                   showSearch
+                  placeholder="Klinik Seç"
+                  style={{ display: "block", marginBottom: "10px" }}
+                />
+              </Form.Item>
+              <Form.Item>
+                <Select
+                  showSearch
                   placeholder="Hekim Ara"
                   style={{ display: "block", marginBottom: "10px" }}
                 />

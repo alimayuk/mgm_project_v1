@@ -1,11 +1,39 @@
 "use client";
-import { Col, Row, Typography } from "antd";
+import { Affix, Card, Col, Row, Space, Typography } from "antd";
 import React from "react";
 const { Title, Paragraph } = Typography;
+
+const items = [
+  {
+    href: "#",
+    backgroundImage:
+      "https://images.pexels.com/photos/6812561/pexels-photo-6812561.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    title: "Akıllı Diş Protezleri: Yenilikçi Çözümler",
+  },
+  {
+    href: "#",
+    backgroundImage:
+      "https://images.pexels.com/photos/4687254/pexels-photo-4687254.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    title: "Dijital Röntgen Teknolojisi: Net Görüntüler",
+  },
+  {
+    href: "#",
+    backgroundImage:
+      "https://images.pexels.com/photos/298611/pexels-photo-298611.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    title: "3D Diş Tarama: Hassas Analizler",
+  },
+  {
+    href: "#",
+    backgroundImage:
+      "https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    title: "Gelişmiş Ortodontik Tedavi Yöntemleri",
+  },
+];
+
 const page = () => {
   return (
     <div className="container">
-      <Row gutter={[16,16]} style={{ marginTop: "20px" }}>
+      <Row gutter={[16, 16]} style={{ marginTop: "20px" }}>
         <Col md={24} lg={18}>
           <div
             style={{
@@ -17,7 +45,12 @@ const page = () => {
             <img
               src="https://images.pexels.com/photos/6528907/pexels-photo-6528907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               alt=""
-              style={{ width: "100%", borderRadius: "20px", maxHeight: "500px", objectFit: "cover" }}
+              style={{
+                width: "100%",
+                borderRadius: "20px",
+                maxHeight: "500px",
+                objectFit: "cover",
+              }}
             />
             <Title style={{ marginTop: "20px" }} level={1}>
               Dijital Dişçilik: Geleceğin Diş Hekimliği
@@ -60,22 +93,95 @@ const page = () => {
               dijital dişçiliğin daha da yaygınlaşması ve yeni teknolojilerin
               geliştirilmesiyle, diş sağlığı alanında büyük ilerlemeler
               kaydedilecektir.
+              Bu, tedavi süreçlerini hızlandırırken, maliyetleri de düşürür.
+              Intraoral Tarayıcılar Intraoral tarayıcılar, hastaların ağız içi
+              ölçümlerini dijital olarak alır. Bu tarayıcılar, geleneksel ölçüm
+              yöntemlerine göre daha konforludur ve daha hassas sonuçlar verir.
+              Dijital Dişçiliğin Avantajları Hızlı ve Hassas Teşhis: Dijital
+              teknolojiler, diş hekimlerinin daha hızlı ve doğru teşhis
+              koymasını sağlar. Konforlu Deneyim: Dijital yöntemler, hastalar
+              için daha az invazivdir ve daha konforlu bir tedavi süreci sunar.
+              Daha İyi Tedavi Planlaması: Dijital veriler, diş hekimlerinin daha
+              etkili tedavi planları oluşturmasına yardımcı olur. Maliyet ve
+              Zaman Tasarrufu: Dijital teknolojiler, tedavi süreçlerini
+              hızlandırır ve maliyetleri düşürür. Sonuç Dijital dişçilik, diş
+              hekimliği alanında devrim yaratmaktadır. Bu teknolojiler, hem diş
+              hekimlerine hem de hastalara birçok avantaj sunar. Gelecekte
+              dijital dişçiliğin daha da yaygınlaşması ve yeni teknolojilerin
+              geliştirilmesiyle, diş sağlığı alanında büyük ilerlemeler
+              kaydedilecektir.
             </Paragraph>
           </div>
         </Col>
-        <Col md={24} lg={6} style={{ width:"100%" }}>
+        <Col md={24} lg={6} style={{ width: "100%", position:"relative" }}>
           <div
             style={{
               backgroundColor: "white",
               padding: "10px",
               backgroundColor: "white",
-              padding: "10px",
+              padding: "10px 10px 30px 10px",
               borderRadius: "20px",
-              height:"100%",
-              width:"100%",
+              height: "min-content",
+              width: "100%",
+              position:"sticky",
+              top: 20,
             }}
           >
-            <Title level={3} style={{ textAlign:"center" }}>Benzer İçerikler</Title>
+            <Title level={3}>
+              Benzer İçerikler
+            </Title>
+            <Space
+              direction="horizontal"
+              size="middle"
+              align="center"
+              wrap
+              style={{
+                display: "flex",
+                justifyContent:"center"
+              }}
+              styles={{
+                item: {
+                  width: "250px",
+                },
+              }}
+            >
+              {items.map((item, index) => (
+                <a
+                  key={index}
+                  href={item.href}
+                  style={{ textDecoration: "none" }}
+                >
+                  <Card
+                    style={{
+                      height: 150,
+                      position: "relative",
+                      backgroundImage: `url(${item.backgroundImage})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "top",
+                      borderRadius: "10px",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <div className="overlay">
+                      <Paragraph
+                        level={4}
+                        style={{
+                          position: "absolute",
+                          bottom: 10,
+                          left: 15,
+                          color: "white",
+                          margin: 0,
+                          fontSize: "16px",
+                        }}
+                        ellipsis={{ rows: 2, expandable: false }}
+                      >
+                        {item.title}
+                      </Paragraph>
+                    </div>
+                  </Card>
+                </a>
+              ))}
+            </Space>
           </div>
         </Col>
       </Row>

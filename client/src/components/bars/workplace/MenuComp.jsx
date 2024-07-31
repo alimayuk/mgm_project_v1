@@ -20,7 +20,7 @@ const items = [
   {
     key: "321",
     icon: <AppstoreOutlined />,
-    label: <a href="/isletme/randevu">Randevu İstekleri</a>,
+    label: <a href="/isletme/randevu-istekleri">Randevu İstekleri</a>,
   },
   {
     key: "3",

@@ -68,7 +68,7 @@ const Navbar = () => {
           <Button href="/randevu-al" className="btnRandevu" type="primary">
             Randevu Al
           </Button>
-          <LocaleSwitcher />
+          {!isMobile && <LocaleSwitcher />}
           {isMobile && <MenuOutlined onClick={showDrawer} />}
         </div>
         <Drawer
@@ -86,6 +86,9 @@ const Navbar = () => {
           }}
         >
           <Menu width={"100%"} mode="vertical" items={items}  />
+          <div style={{ margin: "20px 0 0 10px" }}>
+          <LocaleSwitcher />
+          </div>
         </Drawer>
       </div>
   );

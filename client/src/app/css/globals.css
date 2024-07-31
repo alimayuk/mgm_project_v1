@@ -59,6 +59,21 @@ li {
   background-position: center;
 }
 
+/* BLOG DETAIL*/
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.425);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.overlay:hover {
+  color: red !important;
+}
+
 .footer {
   padding: 60px 5px;
 }
@@ -115,8 +130,6 @@ li {
   gap: 20px;
 }
 
-
-
 .locale-switcher {
   position: relative;
 }
@@ -158,4 +171,3 @@ li {
 .locale-switcher__item:hover {
   background-color: #60a5fa; /* Equivalent to hover:bg-blue-400 */
 }
-
