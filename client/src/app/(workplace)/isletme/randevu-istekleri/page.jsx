@@ -14,6 +14,7 @@ import {
   DatePicker,
   TimePicker,
   Tooltip,
+  Divider,
 } from "antd";
 import moment from "moment";
 
@@ -237,7 +238,7 @@ const Page = () => {
             <p>
               <strong>Mesaj:</strong> {currentRecord.message}
             </p>
-
+                <Divider style={{ margin: "15px 0" }}/>
             <Form form={form} layout="vertical">
               <Form.Item
                 name="klinik"
