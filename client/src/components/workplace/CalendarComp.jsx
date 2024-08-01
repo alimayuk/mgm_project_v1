@@ -44,6 +44,11 @@ const CalendarComp = () => {
           </Button>,
         ]}
       >
+      <Select
+          showSearch
+          placeholder="Klinik Ara"
+          style={{ display: "block", marginBottom: "10px" }}
+        />
         <Select
           showSearch
           placeholder="Hekim Ara"
@@ -73,6 +78,8 @@ const CalendarComp = () => {
           placeholder="Bitiş Saati"
         />
         <Input placeholder="Randevu Başlığı" style={{ marginBottom: "10px" }} />
+        <Input placeholder="Ad Soyad" style={{ marginBottom: "10px" }} />
+        <Input placeholder="Telefon No" style={{ marginBottom: "10px" }} />
         <TextArea
           placeholder="Randevu Açıklama"
           style={{ marginBottom: "10px" }}

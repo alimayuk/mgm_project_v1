@@ -1,6 +1,7 @@
 "use client";
-import { Affix, Card, Col, Row, Space, Typography } from "antd";
+import { Card, Col, Row, Space, Typography } from "antd";
 import React from "react";
+import {CalendarOutlined} from "@ant-design/icons"
 const { Title, Paragraph } = Typography;
 
 const items = [
@@ -52,6 +53,7 @@ const page = () => {
                 objectFit: "cover",
               }}
             />
+            <Paragraph style={{ marginTop:"20px", color:"lightgray" }}><CalendarOutlined /> 16 Haziran, 2024</Paragraph>
             <Title style={{ marginTop: "20px" }} level={1}>
               Dijital Dişçilik: Geleceğin Diş Hekimliği
             </Title>
