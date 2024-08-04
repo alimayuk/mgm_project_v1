@@ -601,6 +601,17 @@ const StaffTable = () => {
               <Input />
             </Form.Item>
             <Form.Item
+              label="Pozisyon"
+              name="pozition"
+              rules={[{ required: true, message: "Lütfen kliniği seçin!" }]}
+            >
+              <Select>
+                <Select.Option value="doctor">Hekim</Select.Option>
+                <Select.Option value="asistan">Asistan</Select.Option>
+                <Select.Option value="sekreter">Sekreter</Select.Option>
+              </Select>
+            </Form.Item>
+            <Form.Item
               label="Şehir"
               name="city"
               rules={[{ required: true, message: "Lütfen şehri seçin!" }]}

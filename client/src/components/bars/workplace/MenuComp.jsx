@@ -29,11 +29,11 @@ const items = [
     children: [
       {
         key: "31",
-        label: "Blog Oluştur",
+        label: <a href="/isletme/blog-olustur">Blog Oluştur</a>,
       },
       {
         key: "32",
-        label: "Blogları Listele",
+        label: <a href="/isletme/blog-listele">Blogları Listele</a>,
       },
     ],
   },

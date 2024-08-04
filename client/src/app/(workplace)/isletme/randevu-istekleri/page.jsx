@@ -16,7 +16,7 @@ import {
   Tooltip,
   Divider,
 } from "antd";
-import moment from "moment";
+
 
 const { Title } = Typography;
 const { TextArea } = Input;
@@ -76,7 +76,7 @@ const columns = (editRecord) => [
     ),
   },
   {
-    title: "Action",
+    title: "İşlemler",
     key: "action",
     render: (_, record) => (
       <Space size="middle">
@@ -87,7 +87,7 @@ const columns = (editRecord) => [
   },
 ];
 
-const data = [
+const data = [  
   {
     key: "1",
     name: "Ali Veli",
@@ -152,11 +152,11 @@ const Page = () => {
     form.setFieldsValue({
       klinik: record.klinik,
       hekim: record.hekim,
-      workDate: moment(record.workDate, "YYYY-MM-DD"),
-      startTime: moment(), // Varsayılan olarak şimdiki zamanı koyuyoruz
-      endTime: moment().add(1, "hour"), // Varsayılan olarak 1 saat sonrayı koyuyoruz
-      title: "", // Varsayılan boş
-      description: "", // Varsayılan boş
+      workDate: "",
+      startTime: "" , 
+      endTime:  "", 
+      title: "", 
+      description: "", 
     });
     setIsModalVisible(true);
   };
@@ -240,6 +240,21 @@ const Page = () => {
             </p>
                 <Divider style={{ margin: "15px 0" }}/>
             <Form form={form} layout="vertical">
+            <Form.Item
+                name="status"
+                label="Durum"
+                rules={[{ required: true, message: "Lütfen durum seçiniz!" }]}
+              >
+                <Select
+                  showSearch
+                  placeholder="Durum Seç"
+                  style={{ width: "100%" }}
+                >
+                  <Option value="Onaylandı">Onaylandı</Option>
+                  <Option value="Reddedildi">Reddedildi</Option>
+                  <Option value="Beklemede">Beklemede</Option>
+                </Select>
+              </Form.Item>
               <Form.Item
                 name="klinik"
                 label="Klinik"
