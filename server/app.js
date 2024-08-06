@@ -5,12 +5,17 @@ import connectDB from "./config/connectDB.js";
 import cors from "cors";
 import authRouter from "./routes/auth.routes.js";
 import staffRouter from "./routes/staff.routes.js";
+import galleryRouter from "./routes/gallery.routes.js";
 import rezervationsRouter from "./routes/reservations.routes.js";
 import "./config/passport-jwt-strategy.js";
 import cookieParser from "cookie-parser";
 import passport from "passport";
+import bodyParser from "body-parser";
 const app = express();
 app.use(express.json());
+
+// Body parser middleware
+app.use(bodyParser.json());
 
 // add environment variables
 const DATABASE_URL = process.env.DATABASE_URL;
@@ -38,9 +43,11 @@ app.use(passport.initialize());
 app.use(cookieParser());
 
 // routes
+app.use("/api/gallery", galleryRouter);
 app.use("/api/account", authRouter);
 app.use("/api/staff", staffRouter);
 app.use("/api/reservations", rezervationsRouter);
+app.use('/uploads', express.static('uploads'));
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);

@@ -3,3 +3,10 @@
 - verifyemail client kısmını auth da yer oluştur.
 - reset password link gönderme clientin kısmını düzenle.
 - email doğrulama için toolkit kısmında api oluştur ve page içinde orayı düzenle.
+
+
+--veri ekleme işlemi
+
+1- services kısmında yapıyı oluştur
+2- store kısmına eklemesini yap
+3- istediğin yerde çağır
