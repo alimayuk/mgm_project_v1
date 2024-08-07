@@ -1,11 +1,11 @@
-import GaleiUploadComp from '@/components/workplace/GaleriUploadComp'
+import GalleryUploadComp from '@/components/workplace/GalleryUploadComp'
 import GalleryComp from '@/components/workplace/GalleryComp'
 import React from 'react'
 
 const page = () => {
   return (
     <div className='container'>
-        <GaleiUploadComp />
+        <GalleryUploadComp />
         <GalleryComp />
     </div>
   )

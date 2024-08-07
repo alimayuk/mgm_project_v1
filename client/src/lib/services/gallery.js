@@ -13,7 +13,13 @@ export const galleryApi = createApi({
                 method: 'GET',
             }),
         }),
+        deleteImage: builder.mutation({
+            query: (id) => ({
+                url: `/${id}`, 
+                method: 'DELETE',
+              }),
+        })
     }),
  });
 
- export const { useGetGalleryImagesQuery} = galleryApi;
+ export const { useGetGalleryImagesQuery, useDeleteImageMutation} = galleryApi;

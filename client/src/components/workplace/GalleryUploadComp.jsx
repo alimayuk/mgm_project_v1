@@ -1,7 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
-import { Image, Upload, Button, message } from "antd";
+import { Image, Upload, Button, Input, message } from "antd";
+import "@/app/css/GalleryUploadComp.css"; // Import the CSS file
 
 const getBase64 = (file) =>
   new Promise((resolve, reject) => {
@@ -11,11 +12,14 @@ const getBase64 = (file) =>
     reader.onerror = (error) => reject(error);
   });
 
-const GaleiUploadComp = () => {
+const GalleryUploadComp = () => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [fileList, setFileList] = useState([]);
   const [uploading, setUploading] = useState(false);
+  const [titles, setTitles] = useState({});
+  const [alts, setAlts] = useState({});
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handlePreview = async (file) => {
     if (!file.url && !file.preview) {
@@ -25,7 +29,17 @@ const GaleiUploadComp = () => {
     setPreviewOpen(true);
   };
 
-  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+  const handleChange = async ({ fileList: newFileList }) => {
+    const updatedFileList = await Promise.all(
+      newFileList.map(async (file) => {
+        if (!file.url && !file.thumbUrl) {
+          file.thumbUrl = await getBase64(file.originFileObj);
+        }
+        return file;
+      })
+    );
+    setFileList(updatedFileList);
+  };
 
   const handleUpload = async () => {
     setUploading(true);
@@ -33,7 +47,10 @@ const GaleiUploadComp = () => {
     const uploadPromises = fileList.map((file) => {
       const formData = new FormData();
       formData.append("file", file.originFileObj);
-      return fetch("https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload", {
+      formData.append("title", titles[file.uid]);
+      formData.append("alt", alts[file.uid]);
+
+      return fetch("http://localhost:8000/api/gallery/", {
         method: "POST",
         body: formData,
       });
@@ -42,12 +59,23 @@ const GaleiUploadComp = () => {
     try {
       await Promise.all(uploadPromises);
       setFileList([]); // Clear the file list after successful upload
+      setTitles({});
+      setAlts({});
       message.success("Görseller başarıyla yüklendi!");
     } catch (error) {
       console.error("Upload failed:", error);
       message.error("Yükleme başarısız oldu.");
     } finally {
       setUploading(false);
+    }
+  };
+
+  const handleInputChange = (e, type, uid) => {
+    const value = e.target.value;
+    if (type === "title") {
+      setTitles({ ...titles, [uid]: value });
+    } else {
+      setAlts({ ...alts, [uid]: value });
     }
   };
 
@@ -67,9 +95,40 @@ const GaleiUploadComp = () => {
         onChange={handleChange}
         beforeUpload={() => false} // Prevents automatic upload
         multiple // Allows multiple file selection
+        onRemove={(file) => {
+          const newFileList = fileList.filter((item) => item.uid !== file.uid);
+          setFileList(newFileList);
+          const newTitles = { ...titles };
+          const newAlts = { ...alts };
+          delete newTitles[file.uid];
+          delete newAlts[file.uid];
+          setTitles(newTitles);
+          setAlts(newAlts);
+        }}
       >
         {fileList.length >= 8 ? null : uploadButton}
       </Upload>
+
+      <div className="image-input-container">
+        {fileList.map((file) => (
+          <div key={file.uid} className="image-input-item">
+            <img src={file.thumbUrl} alt="thumbnail" className="image-preview" />
+            <div className="input-group">
+              <Input
+                placeholder="Başlık"
+                value={titles[file.uid] || ""}
+                onChange={(e) => handleInputChange(e, "title", file.uid)}
+                style={{ marginBottom: 8 }}
+              />
+              <Input
+                placeholder="Alt Metin"
+                value={alts[file.uid] || ""}
+                onChange={(e) => handleInputChange(e, "alt", file.uid)}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
 
       <Button
         type="primary"
@@ -83,7 +142,6 @@ const GaleiUploadComp = () => {
 
       {previewImage && (
         <Image
-          wrapperStyle={{ display: "none" }}
           preview={{
             visible: previewOpen,
             onVisibleChange: (visible) => setPreviewOpen(visible),
@@ -96,4 +154,4 @@ const GaleiUploadComp = () => {
   );
 };
 
-export default GaleiUploadComp;
+export default GalleryUploadComp;
