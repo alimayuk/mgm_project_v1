@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import { Image, Upload, Button, Input, message } from "antd";
-import "@/app/css/GalleryUploadComp.css"; // Import the CSS file
+import "@/app/css/GalleryUploadComp.css";
+import { useAddGalleryImagesMutation } from "@/lib/services/gallery";
 
 const getBase64 = (file) =>
   new Promise((resolve, reject) => {
@@ -19,7 +20,7 @@ const GalleryUploadComp = () => {
   const [uploading, setUploading] = useState(false);
   const [titles, setTitles] = useState({});
   const [alts, setAlts] = useState({});
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [addGalleryImages] = useAddGalleryImagesMutation();
 
   const handlePreview = async (file) => {
     if (!file.url && !file.preview) {
@@ -50,15 +51,12 @@ const GalleryUploadComp = () => {
       formData.append("title", titles[file.uid]);
       formData.append("alt", alts[file.uid]);
 
-      return fetch("http://localhost:8000/api/gallery/", {
-        method: "POST",
-        body: formData,
-      });
+      return addGalleryImages(formData).unwrap();
     });
 
     try {
       await Promise.all(uploadPromises);
-      setFileList([]); // Clear the file list after successful upload
+      setFileList([]);
       setTitles({});
       setAlts({});
       message.success("Görseller başarıyla yüklendi!");
@@ -79,13 +77,6 @@ const GalleryUploadComp = () => {
     }
   };
 
-  const uploadButton = (
-    <div>
-      <PlusOutlined />
-      <div style={{ marginTop: 8 }}>Görsel Ekle</div>
-    </div>
-  );
-
   return (
     <>
       <Upload
@@ -93,8 +84,8 @@ const GalleryUploadComp = () => {
         fileList={fileList}
         onPreview={handlePreview}
         onChange={handleChange}
-        beforeUpload={() => false} // Prevents automatic upload
-        multiple // Allows multiple file selection
+        beforeUpload={() => false}
+        multiple
         onRemove={(file) => {
           const newFileList = fileList.filter((item) => item.uid !== file.uid);
           setFileList(newFileList);
@@ -106,13 +97,22 @@ const GalleryUploadComp = () => {
           setAlts(newAlts);
         }}
       >
-        {fileList.length >= 8 ? null : uploadButton}
+        {fileList.length >= 8 ? null : (
+          <div>
+            <PlusOutlined />
+            <div style={{ marginTop: 8 }}>Görsel Ekle</div>
+          </div>
+        )}
       </Upload>
 
       <div className="image-input-container">
         {fileList.map((file) => (
           <div key={file.uid} className="image-input-item">
-            <img src={file.thumbUrl} alt="thumbnail" className="image-preview" />
+            <img
+              src={file.thumbUrl}
+              alt="thumbnail"
+              className="image-preview"
+            />
             <div className="input-group">
               <Input
                 placeholder="Başlık"
