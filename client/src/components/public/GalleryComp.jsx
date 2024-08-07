@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Col, Image, Row, Spin } from "antd";
+import { Col, Empty, Image, Row, Spin } from "antd";
 import TitleComp from "./TitleComp";
 import { EyeOutlined } from "@ant-design/icons";
 import { useGetGalleryImagesQuery } from "@/lib/services/gallery";
@@ -9,18 +9,18 @@ const GalleryComp = () => {
   const { data: images = [], isLoading, error } = useGetGalleryImagesQuery();
 
   if (error) {
-    return <div>Error loading images</div>;
+    return <Empty description="İçerik Bulunamadı" style={{ minHeight:"50vh",display: "flex",flexDirection:"column", alignItems:"center", justifyContent:"center" }} />;
   }
 
   return (
-    <div>
+    <div style={{minHeight:"50vh"}}>
+      <Spin spinning={isLoading}>
       <TitleComp
         title={"Galeri"}
         subText={
           "Diş kliniğimizdeki modern teknoloji ve rahat ortamımızı keşfedin. Başarılı tedavi süreçlerimizi ve mutlu hastalarımızın gülümsemelerini galerimizde bulabilirsiniz."
         }
       />
-      <Spin spinning={isLoading}>
         <Image.PreviewGroup
           preview={{
             countRender: (current) => {
