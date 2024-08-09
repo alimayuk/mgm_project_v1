@@ -27,7 +27,7 @@ export async function middleware(request) {
       searchParams.set("next", nextUrl.pathname);
   
       const response = NextResponse.redirect(
-        new URL(`/account/login?${searchParams}`, url)
+        new URL(`/giris?${searchParams}`, url)
       );
       response.cookies.delete("token");
   
@@ -38,5 +38,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/user/:path*', '/giris', '/kayit-ol']
+  matcher: ['/a/:path*', '/giris', '/kayit-ol']
 }
