@@ -6,6 +6,7 @@ import cors from "cors";
 import authRouter from "./routes/auth.routes.js";
 import staffRouter from "./routes/staff.routes.js";
 import galleryRouter from "./routes/gallery.routes.js";
+import blogRouter from "./routes/blog.routes.js";
 import rezervationsRouter from "./routes/reservations.routes.js";
 import "./config/passport-jwt-strategy.js";
 import cookieParser from "cookie-parser";
@@ -44,6 +45,7 @@ app.use(cookieParser());
 
 // routes
 app.use("/api/gallery", galleryRouter);
+app.use('/api/blogs', blogRouter);
 app.use("/api/account", authRouter);
 app.use("/api/staff", staffRouter);
 app.use("/api/reservations", rezervationsRouter);

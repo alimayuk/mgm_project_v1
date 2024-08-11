@@ -23,7 +23,7 @@ class GalleryController {
       const { title, alt } = req.body;
   
       if (!files || files.length === 0) {
-        return res.status(400).json({ error: "No files were uploaded." });
+        return res.status(400).json({ error: "Hiçbir dosya yüklenmedi." });
       }
   
       // Varsayılan değerleri kontrol et ve gerekiyorsa ata

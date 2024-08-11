@@ -2,6 +2,7 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 import "./css/globals.css";
 import "./css/responsive.css";
 import "./css/antDesingCustom.css";
+import "suneditor/dist/css/suneditor.min.css";
 import StoreProvider from "./StoreProvider";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";

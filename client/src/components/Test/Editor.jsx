@@ -3,7 +3,6 @@ import { Button, Checkbox, Form, Input, Upload, Image, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import React, { useState } from "react";
 import SunEditor from "suneditor-react";
-import "suneditor/dist/css/suneditor.min.css";
 import { useCreateBlogMutation } from "@/lib/services/blog";
 
 
