@@ -2,6 +2,7 @@ import Blog from "../../models/Blog.js";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import upload from "../../middlewares/multerConfig.js";
 
 // ES modülleri ile __dirname elde etme
 const __filename = fileURLToPath(import.meta.url);
@@ -77,22 +78,36 @@ class BlogController {
   }
 
   static async createBlog(req, res) {
-    try {
-      const { title, content } = req.body;
-      const image_path = req.files[0].path; // İlk yüklenen dosyanın yolunu al
-      const slug = await generateUniqueSlug(title);
-      const newBlog = new Blog({
-        title,
-        slug,
-        image_path,
-        content,
-      });
-
-      await newBlog.save();
-      res.status(201).json(newBlog);
-    } catch (error) {
-      res.status(400).json({ message: error.message });
-    }
+    upload.array('image', 1)(req, res, async function (err) {
+      if (err) {
+        return res.status(400).json({ message: err.message });
+      }
+      
+      try {
+        const { title, content, active } = req.body;
+        const image_path = req.files[0].path; // İlk yüklenen dosyanın yolunu al
+        const slug = await generateUniqueSlug(title);
+        
+        const newBlog = new Blog({
+          title,
+          slug,
+          image_path,
+          content,
+          active,
+        });
+  
+        await newBlog.save();
+        res.status(201).json(newBlog);
+      } catch (error) {
+        // Hata durumunda dosyayı sil
+        if (req.files && req.files.length > 0) {
+          fs.unlink(req.files[0].path, (err) => {
+            if (err) console.error('Dosya silinemedi:', err);
+          });
+        }
+        res.status(400).json({ message: error.message });
+      }
+    });
   }
 
   // Belirli bir blogu güncelleyen metod

@@ -8,7 +8,7 @@ router.get("/page",BlogController.getAllBlogs);
 router.get("/",BlogController.getBlogsPagination);
 router.get("/:slug", BlogController.getBlogBySlug)
 
-router.post("/", upload.array('image', 1) ,BlogController.createBlog);
+router.post("/", BlogController.createBlog);
 router.put("/:slug", upload.array('image', 1), BlogController.updateBlog)
 router.delete("/:slug", BlogController.deleteBlog);
 

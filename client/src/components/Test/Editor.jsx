@@ -30,7 +30,7 @@ const Editor = () => {
       formData.append("title", values.title);
       formData.append("content", content);
       if (fileList[0]) {
-        formData.append("coverImage", fileList[0].originFileObj);
+        formData.append("image", fileList[0].originFileObj);
       }
       formData.append("active", values.active); // Checkbox değeri true/false olarak eklenir
 

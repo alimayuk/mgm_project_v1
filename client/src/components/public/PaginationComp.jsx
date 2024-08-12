@@ -1,5 +1,5 @@
 "use client";
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { Badge, Card, List, Spin } from "antd";
 import TitleComp from "@/components/public/TitleComp";
 import { useGetBlogsQuery } from "@/lib/services/blog";
@@ -18,8 +18,8 @@ const PaginationComp = () => {
     skip: (page - 1) * limit,
   });
 
-  const items = response?.posts || []; 
-  const totalItems = response?.total || 0; 
+  const items = response?.posts || [];
+  const totalItems = response?.total || 0;
 
   return (
     <div className="container">
@@ -84,7 +84,12 @@ const PaginationComp = () => {
                   )
                 }
               >
-                <Meta title={item.title} description={item.content} />
+                <Meta
+                  title={item.title}
+                  description={
+                    <div dangerouslySetInnerHTML={{ __html: item.content }} />
+                  }
+                />
               </Card>
             </List.Item>
           )}
