@@ -12,6 +12,12 @@ export const blogApi = createApi({
         method: "GET",
       }),
     }),
+    getBlogDetail: builder.query({
+      query: (slug) => ({
+        url: `/${slug}`,
+        method: "GET",
+      }),
+    }),
     createBlog: builder.mutation({
       query: (newBlog) => ({
         url: "",
@@ -19,7 +25,8 @@ export const blogApi = createApi({
         body: newBlog,
       }),
     }),
+    
   }),
 });
 
-export const { useGetBlogsQuery,useCreateBlogMutation } = blogApi;
+export const { useGetBlogDetailQuery,useGetBlogsQuery,useCreateBlogMutation } = blogApi;

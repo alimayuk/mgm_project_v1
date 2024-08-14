@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Badge, Card, List, Spin } from "antd";
 import TitleComp from "@/components/public/TitleComp";
 import { useGetBlogsQuery } from "@/lib/services/blog";
+import Link from "next/link";
 
 const { Meta } = Card;
 
@@ -51,11 +52,12 @@ const PaginationComp = () => {
           dataSource={items}
           renderItem={(item, index) => (
             <List.Item style={{ height: "100%" }}>
-              <Card
+             <Link href={`bloglar/${item.slug}`}>
+             <Card
                 key={index}
                 hoverable
                 style={{
-                  height: "100%",
+                  height: "400px",
                   fontSize: "16px",
                 }}
                 cover={
@@ -87,10 +89,22 @@ const PaginationComp = () => {
                 <Meta
                   title={item.title}
                   description={
-                    <div dangerouslySetInnerHTML={{ __html: item.content }} />
+                    <div
+                      style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 4, // 4 satır
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        flexGrow: 1,
+                        margin: 0,
+                      }}
+                      dangerouslySetInnerHTML={{ __html: item.content }}
+                    />
                   }
                 />
               </Card>
+             </Link>
             </List.Item>
           )}
         />
