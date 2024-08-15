@@ -11,11 +11,19 @@ import {
   ZoomOutOutlined,
   EyeOutlined,
 } from "@ant-design/icons";
-import { useGetGalleryImagesQuery, useDeleteImageMutation } from "@/lib/services/gallery";
+import {
+  useGetGalleryImagesQuery,
+  useDeleteImageMutation,
+} from "@/lib/services/gallery";
 import "@/app/css/GalleryUploadComp.css";
 
 const GalleryComp = () => {
-  const { data: images = [], isLoading, error, refetch } = useGetGalleryImagesQuery();
+  const {
+    data: images = [],
+    isLoading,
+    error,
+    refetch,
+  } = useGetGalleryImagesQuery();
   const [deleteImage] = useDeleteImageMutation();
   const [selectedImageId, setSelectedImageId] = useState(null);
   const [previewVisible, setPreviewVisible] = useState(false);

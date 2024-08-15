@@ -25,8 +25,15 @@ export const blogApi = createApi({
         body: newBlog,
       }),
     }),
+    updateBlog: builder.mutation({
+      query: ({updatedBlog,slug}) => ({
+        url: `/${slug}`,
+        method: "PUT",
+        body: updatedBlog,
+      }),
+    }),
     
   }),
 });
 
-export const { useGetBlogDetailQuery,useGetBlogsQuery,useCreateBlogMutation } = blogApi;
+export const { useGetBlogDetailQuery,useGetBlogsQuery,useCreateBlogMutation, useUpdateBlogMutation } = blogApi;

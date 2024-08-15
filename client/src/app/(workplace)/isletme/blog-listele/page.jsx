@@ -1,9 +1,10 @@
+import PaginationComp from '@/components/workplace/PaginationComp'
 import React from 'react'
 
 const page = () => {
   return (
     <div className='container'>
-        page
+        <PaginationComp />
     </div>
   )
 }

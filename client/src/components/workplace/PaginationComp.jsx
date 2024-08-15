@@ -1,9 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import { Badge, Card, List, Spin } from "antd";
+import { Badge, Card, List, Spin, message } from "antd";
 import TitleComp from "@/components/public/TitleComp";
 import { useGetBlogsQuery } from "@/lib/services/blog";
 import Link from "next/link";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import { useRouter } from "next/navigation";
 
 const { Meta } = Card;
 
@@ -21,6 +23,17 @@ const PaginationComp = () => {
 
   const items = response?.posts || [];
   const totalItems = response?.total || 0;
+  const router = useRouter();
+
+  const handleEditClick = (slug) => {
+    router.push(`blog-guncelle/${slug}`);
+  };
+
+  const handleDeleteClick = (slug) => {
+    // Burada, bir blogu silme işlemi yapabilirsiniz.
+    // Örneğin, bir API isteği yapabilir ve başarılı ise kullanıcıyı yönlendirebilirsiniz.
+    message.info(`Blog ${slug} silinecek.`);
+  };
 
   return (
     <div className="container">
@@ -50,14 +63,21 @@ const PaginationComp = () => {
             current: page,
           }}
           dataSource={items}
-          renderItem={(item, index) => (
+          renderItem={(item) => (
             <List.Item style={{ height: "100%" }}>
-             <Link href={`bloglar/${item.slug}`}>
-             <Card
-                key={index}
-                hoverable
+              <Card
+                actions={[
+                  <DeleteOutlined
+                    key="delete"
+                    onClick={() => handleDeleteClick(item.slug)}
+                  />,
+                  <EditOutlined
+                    key="edit"
+                    onClick={() => handleEditClick(item.slug)}
+                  />,
+                ]}
                 style={{
-                  height: "400px",
+                  height: "100%",
                   fontSize: "16px",
                 }}
                 cover={
@@ -75,36 +95,21 @@ const PaginationComp = () => {
                     </Badge.Ribbon>
                   ) : (
                     <img
-                        alt={item.title}
-                        src={`http://localhost:8000/${item.image_path}`}
-                        style={{
-                          height: "200px",
-                          width: "100%",
-                          objectFit: "cover",
-                        }}
-                      />
+                      alt={item.title}
+                      src={`http://localhost:8000/${item.image_path}`}
+                      style={{
+                        height: "200px",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
                   )
                 }
               >
-                <Meta
-                  title={item.title}
-                  description={
-                    <div
-                      style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 4, // 4 satır
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        flexGrow: 1,
-                        margin: 0,
-                      }}
-                      dangerouslySetInnerHTML={{ __html: item.content }}
-                    />
-                  }
-                />
+                <Link href={`blog-guncelle/${item.slug}`}>
+                  <Meta title={item.title} />
+                </Link>
               </Card>
-             </Link>
             </List.Item>
           )}
         />

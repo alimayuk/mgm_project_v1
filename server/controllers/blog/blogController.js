@@ -71,7 +71,23 @@ class BlogController {
       if (!blog) {
         return res.status(404).json({ message: "Blog bulunamadı" });
       }
-      res.status(200).json(blog);
+
+      // Tarihi 'gün/ay/yıl' formatında düzenlemek
+    const formattedBlog = {
+      ...blog.toObject(),
+      createdAt: blog.createdAt.toLocaleDateString('tr-TR'),
+    };
+
+       // Son 4 blogu almak, mevcut blog hariç, 'content' alanını dışla
+    const recentBlogs = await Blog.find({ slug: { $ne: req.params.slug } })
+    .sort({ createdAt: -1 })
+    .limit(4)
+    .select('-content'); // 'content' alanını dışla
+
+      res.status(200).json({
+        blog: formattedBlog,
+        recentBlogs
+      });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
@@ -113,10 +129,9 @@ class BlogController {
   // Belirli bir blogu güncelleyen metod
   static async updateBlog(req, res) {
     try {
-      const { title, content } = req.body;
+      const { title, content, active } = req.body;
       const { slug } = req.params;
       const blog = await Blog.findOne({ slug });
-
       if (!blog) {
         return res.status(404).json({ message: "Blog bulunamadı" });
       }
@@ -131,6 +146,7 @@ class BlogController {
         }
         blog.image_path = newImagePath;
       }
+
       // Slug'i güncelleme işlemi
       if (blog.title != title) {
         const newSlug = await generateUniqueSlug(title);
