@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import { Badge, Card, List, Spin, message } from "antd";
+import { Badge, Card, List, Spin, message, Popconfirm } from "antd";
 import TitleComp from "@/components/public/TitleComp";
-import { useGetBlogsQuery } from "@/lib/services/blog";
+import { useDeleteBlogMutation, useGetBlogsQuery } from "@/lib/services/blog";
 import Link from "next/link";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 const { Meta } = Card;
 
 const PaginationComp = () => {
+  const [deleteBlog] = useDeleteBlogMutation();
   const [page, setPage] = useState(1);
   const [limit] = useState(6);
   const {
@@ -30,9 +31,14 @@ const PaginationComp = () => {
   };
 
   const handleDeleteClick = (slug) => {
-    // Burada, bir blogu silme işlemi yapabilirsiniz.
-    // Örneğin, bir API isteği yapabilir ve başarılı ise kullanıcıyı yönlendirebilirsiniz.
-    message.info(`Blog ${slug} silinecek.`);
+    deleteBlog(slug)
+      .unwrap() 
+      .then(() => {
+        message.success("Blog başarıyla silindi!");
+      })
+      .catch((error) => {
+        message.error("Blog silinirken bir hata oluştu.");
+      });
   };
 
   return (
@@ -67,10 +73,14 @@ const PaginationComp = () => {
             <List.Item style={{ height: "100%" }}>
               <Card
                 actions={[
-                  <DeleteOutlined
-                    key="delete"
-                    onClick={() => handleDeleteClick(item.slug)}
-                  />,
+                  <Popconfirm
+                    title="Silmek istediğinize emin misiniz?"
+                    onConfirm={() => handleDeleteClick(item.slug)}
+                    okText="Evet"
+                    cancelText="Hayır"
+                  >
+                    <DeleteOutlined key="delete" />
+                  </Popconfirm>,
                   <EditOutlined
                     key="edit"
                     onClick={() => handleEditClick(item.slug)}

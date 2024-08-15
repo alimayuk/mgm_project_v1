@@ -32,8 +32,14 @@ export const blogApi = createApi({
         body: updatedBlog,
       }),
     }),
+    deleteBlog: builder.mutation({
+      query: (slug) => ({
+        url: `/${slug}`,
+        method: "DELETE",
+      }),
+    })
     
   }),
 });
 
-export const { useGetBlogDetailQuery,useGetBlogsQuery,useCreateBlogMutation, useUpdateBlogMutation } = blogApi;
+export const { useGetBlogDetailQuery,useGetBlogsQuery,useCreateBlogMutation, useUpdateBlogMutation, useDeleteBlogMutation } = blogApi;
