@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { Form, Input, Button, notification } from "antd";
 import { useRouter } from "next/navigation";
-import { useLoginUserMutation } from "@/lib/services/auth";
 import { jwtTokenCreate } from "@/utils/jwtTokenCreate";
 import ResNotification from "../notifications/ResNotification";
 import { Typography } from "antd";
@@ -11,19 +10,32 @@ const { Title } = Typography;
 const LoginForm = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const [loginUser] = useLoginUserMutation();
 
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      const response = await loginUser(values);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/account/login/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: 'include',  // cookie guncellemek için zorunlu
+        body: JSON.stringify({
+          email: values.email,
+          password: values.password,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Giriş işlemi başarısız oldu");
+      }
+
+      const response = await res.json();
+      console.log();
       const isSuccess = ResNotification(response);
-      if (isSuccess) {
-        setLoading(false);
-        await jwtTokenCreate(response.data.user);
+      if (response.status === "success") {
+        await jwtTokenCreate(response.user);
         router.push("/");
-      } else {
-        setLoading(false);
       }
     } catch (error) {
       notification.error({
@@ -31,6 +43,7 @@ const LoginForm = () => {
         description:
           "Giriş yapmaya çalışırken bir şeyler yanlış gitti, daha sonra tekrar deneyiniz.",
       });
+    } finally {
       setLoading(false);
     }
   };
