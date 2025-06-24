@@ -1,19 +1,21 @@
 import { notification } from "antd";
 
 const ResNotification = (response) => {
-  if (response.data && response.data.status === "success") {
+  if (response.status === "success") {
+    console.log(response.status)
     notification.success({
       message: "Başarılı",
-      description: `${response.data.message}`,
+      description: `${response.message}`,
     });
-    return true; // Başarılı olduğunu belirtmek için true döndürüyoruz
-  } else if (response.error && response.error.data.status === "failed") {
+    return true; 
+
+  } else if (response.status === "failed") {
     notification.error({
       message: "Hata",
-      description: `${response.error.data.message}`,
+      description: `${response.message}`,
     });
   }
-  return false; // Başarısız olduğunu belirtmek için false döndürüyoruz
+  return false;
 };
 
 export default ResNotification;

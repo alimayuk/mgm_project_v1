@@ -14,26 +14,26 @@ const LoginForm = () => {
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/account/login/`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: 'include',  // cookie guncellemek için zorunlu
-        body: JSON.stringify({
-          email: values.email,
-          password: values.password,
-        }),
-      });
-
-      if (!res.ok) {
-        throw new Error("Giriş işlemi başarısız oldu");
-      }
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/account/login/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include", // cookie güncellemek için zorunlu
+          body: JSON.stringify({
+            email: values.email,
+            password: values.password,
+          }),
+        }
+      );
 
       const response = await res.json();
-      console.log();
+
       const isSuccess = ResNotification(response);
-      if (response.status === "success") {
+
+      if (isSuccess) {
         await jwtTokenCreate(response.user);
         router.push("/");
       }
@@ -41,6 +41,7 @@ const LoginForm = () => {
       notification.error({
         message: "Hata",
         description:
+          error.message ||
           "Giriş yapmaya çalışırken bir şeyler yanlış gitti, daha sonra tekrar deneyiniz.",
       });
     } finally {
@@ -123,9 +124,6 @@ const LoginForm = () => {
             Giriş Yap
           </Button>
         </Form.Item>
-        {/* <Form.Item>
-          Hesabınız yok mu? <a href="/kayit-ol">Kayıt Ol</a>
-        </Form.Item> */}
       </Form>
     </div>
   );
